@@ -2,4 +2,8 @@
 /include
 /lib
 /lib64
+/Include
+/Lib
+/Scripts
+pyvenv.cfg
 .env
