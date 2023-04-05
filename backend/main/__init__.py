@@ -15,8 +15,10 @@ def create_app():
     app = Flask (__name__)
 #variables de entorno
     load_dotenv()
-    #cargar a la API el recurso Animales y especificar la ruta 
-    #api.add_resource(resources.AnimalesResource, '/animales')
+    api.add_resource(resources.UsuariosResource, '/usuarios')
+    #cargar a la API el recurso Animal y especificar la ruta 
+    api.add_resource(resources.UsuarioResource, '/usuario/<id>')
+    
 #Iniciaremos los modulos de la app 
 #retornamos la app inicializada
     api.init_app(app)
