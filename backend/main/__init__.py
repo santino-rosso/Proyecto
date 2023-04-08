@@ -13,11 +13,14 @@ api = Api()
 def create_app():
 #Inicio flask
     app = Flask (__name__)
-#variables de entorno
     load_dotenv()
+
     api.add_resource(resources.UsuariosResource, '/usuarios')
-    #cargar a la API el recurso Animal y especificar la ruta 
     api.add_resource(resources.UsuarioResource, '/usuario/<id>')
+    api.add_resource(resources.UsuariosAlumnosResource, '/usuarios_alumnos')
+    api.add_resource(resources.UsuarioAlumnoResource, '/usuario_alumno/<id>')
+    api.add_resource(resources.UsuarioProfesorResource, '/usuario_profesor/<id>')
+   
     
 #Iniciaremos los modulos de la app 
 #retornamos la app inicializada
