@@ -20,8 +20,12 @@ def create_app():
     api.add_resource(resources.UsuariosAlumnosResource, '/usuarios_alumnos')
     api.add_resource(resources.UsuarioAlumnoResource, '/usuario_alumno/<id>')
     api.add_resource(resources.UsuarioProfesorResource, '/usuario_profesor/<id>')
-   
-    
+    api.add_resource(resources.PlanificacionAlumnoResource, '/planificacion_alumno/<id>')
+    api.add_resource(resources.PlanificacionProfesorResource, '/planificacion_profesor/<id>')
+    api.add_resource(resources.PlanificacionesProfesoresResource, '/planificaciones_profesores')
+    api.add_resource(resources.ProfesoresResource, '/profesores')
+    api.add_resource(resources.PagoResource, '/pago/<id>')
+    api.add_resource(resources.LoginResource, '/login')
 #Iniciaremos los modulos de la app 
 #retornamos la app inicializada
     api.init_app(app)

@@ -2,8 +2,8 @@ from flask_restful import Resource
 from flask import request
 
 PROFESORES = {
-    1: {'nombre':'Lionel', 'apellido':'Scaloni' , 'clase':'futbol' },
-    2: {'nombre':'Sergio', 'apellido':'Martinez', 'clase':'boxeo' }
+    1: {'id_profesor' : '1', 'clase':'futbol' },
+    2: {'id_profesor': '2', 'clase':'boxeo' }
 }
 
 class Profesores(Resource):
