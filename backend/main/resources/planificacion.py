@@ -11,7 +11,7 @@ PLANIFICACION_ALUMNO={
 }
 
 class PlanificacionAlumno(Resource):
-     def get(self, id):
+    def get(self, id):
         if int(id) in  PLANIFICACION_ALUMNO:
             return PLANIFICACION_ALUMNO [int(id)]
         return '', 404
