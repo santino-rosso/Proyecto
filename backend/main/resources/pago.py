@@ -1,10 +1,13 @@
 from flask_restful import Resource
-from flask import request
+from flask import request, jsonify
+from .. import db
 
+#Datos de prueba en JSON
 PAGO={
     1:{'id_alumno':'1' ,'pago': 'realizado', 'mes':'enero'},
     2:{'id_alumno':'2' ,'pago': 'pendiente', 'mes':'enero'}
 }
+
 
 class Pago(Resource):
     def get(self, id):
