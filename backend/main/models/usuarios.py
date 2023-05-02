@@ -7,7 +7,8 @@ class Usuarios(db.Model):
     apellido= db.Column(db.String(100), nullable=False)
     contraseña= db.Column(db.String(100), nullable=False)
     telefono= db.Column(db.Integer, nullable=False)
-    
+    profesor= db.relationship("Profesores", uselist=False,back_populates="usuario",cascade="all, delete-orphan",single_parent=True)
+    alumno=db.relationship("Alumnos", uselist=False, back_populates="usuario", cascade="all, delete-orphan",single_parent=True)
     def __repr__(self):
         return '<usuarios: %r %r %r %r  >' % (self.rol,self.nombre,self.apellido,self.telefono)
     
@@ -23,6 +24,8 @@ class Usuarios(db.Model):
 
         }
         return usuarios_json
+    
+    
 
 
     @staticmethod
