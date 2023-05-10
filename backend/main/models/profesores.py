@@ -8,7 +8,7 @@ class Profesores(db.Model):
     
     usuario = db.relationship("Usuarios", uselist=False, back_populates="profesor", cascade = 'all, delete-orphan', single_parent=True)
     planificaciones = db.relationship("Planificaciones", back_polulates='profesor', cascade='all, delete-orphan')
-    profesoresclases = db.relationship("ProfesoresClases", back_populates="profesor",cascade="all, delete-orphan")
+    
 
     def __repr__(self):
         return '<usuarios: %r   >' % (self.especialidad)
@@ -24,13 +24,12 @@ class Profesores(db.Model):
 
     def to_json_complete(self):
         planificaciones = [planificacion.to_json() for planificacion in self.planificaciones]
-        profesoresclases = [profesorclase.to_json() for profesorclase in self.profesoresclases]
+        
         profesores_json = {
             'id': self.id,
             'especialidad': str(self.especialidad),
             'usuario': self.usuario.to_json(),
             'planificaiones':planificaciones,
-            'profesoresclases':profesoresclases
         }
         return profesores_json
 

@@ -16,7 +16,8 @@ class Planificaciones(db.Model):
     id_profesor = db.Column(db.Integer, db.ForeignKey("profesores.id"), primary_key=True)
     id_alumno = db.Column(db.Integer, db.ForeignKey("alumnos.id"), primary_key=True)
     profesor= db.relationship("Profesores", back_populates="planificaciones",uselist=False, single_parent=True)
-    alumno=db.relationship("Alumnos", back_populates="planificaciones",uselist=False, single_parent=True)
+    alumno = db.relationship("Alumnos", back_populates="planificaciones",uselist=False, single_parent=True)
+
     def __repr__(self):
         return '<Planificaciones: %r %r %r %r %r %r %r %r %r %r >' % (self.fecha, self.tipo, self.lunes, self.martes, self.miercoles, self.jueves, self.viernes, self.sabado,self.id_alumno,self.id_profesor)
     

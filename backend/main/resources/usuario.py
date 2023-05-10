@@ -59,7 +59,7 @@ class Usuarios(Resource):
 class UsuarioAlumno(Resource):
     def get(self, id):
         usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
-        return usuario_alumno.to_json()
+        return usuario_alumno.to_json_complete()
     
     def delete(self, id):
         usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
@@ -94,7 +94,7 @@ class UsuariosAlumnos(Resource):
 class UsuarioProfesor(Resource):
     def get(self,id):
         usuario_profesor = db.session.query(ProfesoresModel).get_or_404(id)
-        return usuario_profesor.to_json()
+        return usuario_profesor.to_json_complete()
     
     def put(self, id):
         usuario_profesor = db.session.query(ProfesoresModel).get_or_404(id)

@@ -3,5 +3,5 @@ from .alumnos import Alumnos as AlumnosModel
 from .clases import Clases as ClasesModel
 from .planificaciones import Planificaciones as PlanificacionesModel
 from .profesores import Profesores as ProfesoresModel
-from .profesoresclases import ProfesoresClases as ProfesoresClasesModel
+from .clases import profesores_clases as profesores_clases
 
