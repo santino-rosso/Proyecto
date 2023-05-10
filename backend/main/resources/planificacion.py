@@ -43,11 +43,19 @@ class PlanificacionProfesor(Resource):
 
 class PlanificacionesProfesores(Resource):
     def get(self):
-        planificaciones = db.session.query(PlanificacionesModel).all()
-        return jsonify([planificacion.to_json() for planificacion in planificaciones])
+        id_profesor = request.args.get("id_profesor")
+        planificaciones = db.session.query(PlanificacionesModel)
+        if id_profesor:
+            planificaciones = planificaciones.filter(PlanificacionesModel.id_profesor == id_profesor)
+        planificaciones = planificaciones.all()
+        return jsonify({"planificaciones": [planificacion.to_json() for planificacion in planificaciones]})
 
     def post(self):
         planificacion = PlanificacionesModel.from_json(request.get_json())
-        db.session.add(planificacion)
-        db.session.commit()
+        print(planificacion)
+        try:
+            db.session.add(planificacion)
+            db.session.commit()
+        except:
+            return 'Formato no correcto', 400
         return planificacion.to_json(), 201
