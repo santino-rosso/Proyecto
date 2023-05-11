@@ -7,7 +7,7 @@ class Profesores(db.Model):
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), primary_key=True)
     
     usuario = db.relationship("Usuarios", uselist=False, back_populates="profesor", cascade = 'all, delete-orphan', single_parent=True)
-    planificaciones = db.relationship("Planificaciones", back_polulates='profesor', cascade='all, delete-orphan')
+    planificaciones = db.relationship("Planificaciones", back_populates='profesor', cascade='all, delete-orphan')
     
 
     def __repr__(self):
