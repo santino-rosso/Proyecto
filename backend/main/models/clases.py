@@ -2,8 +2,8 @@ from .. import db
 from datetime import datetime
 
 profesores_clases = db.Table("profesores_clases",
-    db.Column("id_clase",db.Integer,db.ForeignKey("clase.id"),primary_key=True),
-    db.Column("id_profesor",db.Integer,db.ForeignKey("profesor.id"),primary_key=True)
+    db.Column("id_clase",db.Integer,db.ForeignKey("clases.id"),primary_key=True),
+    db.Column("id_profesor",db.Integer,db.ForeignKey("profesores.id"),primary_key=True)
     )
 
 

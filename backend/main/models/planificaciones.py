@@ -1,6 +1,6 @@
 from .. import db
 from datetime import datetime
-from . import ProfesoresModel
+#from . import ProfesoresModel
 from . import AlumnosModel
 
 class Planificaciones(db.Model):
@@ -22,6 +22,7 @@ class Planificaciones(db.Model):
         return '<Planificaciones: %r %r %r %r %r %r %r %r %r %r >' % (self.fecha, self.tipo, self.lunes, self.martes, self.miercoles, self.jueves, self.viernes, self.sabado,self.id_alumno,self.id_profesor)
     
     def to_json(self):
+        from . import ProfesoresModel
         self.profesor = db.session.query(ProfesoresModel).get_or_404(self.id_profesor)
         self.alumno = db.session.query(AlumnosModel).get_or_404(self.id_alumno)
         planificaiones_json = {
