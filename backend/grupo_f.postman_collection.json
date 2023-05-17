@@ -2,9 +2,9 @@
 	"info": {
 		"_postman_id": "2d63dc76-e013-4172-9d38-9d615de3870c",
 		"name": "GRUPO_F",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "26654730",
-		"_collection_link": "https://orange-resonance-960427.postman.co/workspace/Team-Workspace~9ce20cf8-d48d-488d-8ac7-49dc73144274/collection/26654730-2d63dc76-e013-4172-9d38-9d615de3870c?action=share&creator=26654730&source=collection_link"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26654653",
+		"_collection_link": "https://orange-resonance-960427.postman.co/workspace/Team-Workspace~9ce20cf8-d48d-488d-8ac7-49dc73144274/collection/26654730-2d63dc76-e013-4172-9d38-9d615de3870c?action=share&creator=26654653&source=collection_link"
 	},
 	"item": [
 		{
@@ -30,7 +30,52 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuarios"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "per_page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "rol",
+											"value": "Alumno",
+											"disabled": true
+										},
+										{
+											"key": "nombre",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "rol",
+											"value": "Profesor",
+											"disabled": true
+										},
+										{
+											"key": "sortby_apellido",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -41,14 +86,27 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"rol\": \"Alumno\",\n    \"nombre\": \"Arcos\",\n    \"apellido\": \"Elgue\",\n    \"contraseña\": \"cj00\",\n    \"telefono\": 147825\n}",
+									"raw": "{\n    \"rol\": \"Alumno\",\n    \"nombre\": \"Tomas\",\n    \"apellido\": \"Messi\",\n    \"contraseña\": \"delunoalocho\",\n    \"telefono\": 261515896\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuarios"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios"
+									]
+								}
 							},
 							"response": []
 						},
@@ -57,7 +115,21 @@
 							"request": {
 								"method": "DELETE",
 								"header": [],
-								"url": "http://127.0.0.1:5000/usuario/2"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario",
+										"4"
+									]
+								}
 							},
 							"response": []
 						},
@@ -78,7 +150,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuario/1"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -96,7 +182,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuario/3"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario",
+										"3"
+									]
+								}
 							},
 							"response": []
 						}
@@ -122,7 +222,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuario_alumno/2"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario_alumno/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario_alumno",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -140,7 +254,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuario_alumno/2"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario_alumno/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario_alumno",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -153,7 +281,21 @@
 									"mode": "raw",
 									"raw": ""
 								},
-								"url": "http://127.0.0.1:5000/usuario_alumno/1"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario_alumno/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario_alumno",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -162,7 +304,42 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:5000/usuarios_alumnos"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios_alumnos",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios_alumnos"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "per_page",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "nrplanificaciones",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "sortby_nro_socio",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -173,14 +350,27 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"boquita@gmail.com\",\n    \"dni\": 32515987,\n    \"nro_socio\": 35,\n    \"id_usuario\": 4\n    }",
+									"raw": "{\n    \"email\": \"holamundo@gmail.com\",\n    \"dni\": 4e51888,\n    \"nro_socio\": 37,\n    \"id_usuario\": 5\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuarios_alumnos"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios_alumnos",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios_alumnos"
+									]
+								}
 							},
 							"response": []
 						}
@@ -194,7 +384,21 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:5000/usuario_profesor/2"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario_profesor/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario_profesor",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -212,7 +416,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuario_profesor/2"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuario_profesor/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuario_profesor",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -228,7 +446,37 @@
 									"mode": "raw",
 									"raw": ""
 								},
-								"url": "http://127.0.0.1:5000/usuarios_profesores"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios_profesores",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios_profesores"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "perpage",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "nrplanificaciones",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -239,14 +487,27 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"especialidad\": \"Pilates\",\n    \"id_usuario\": 2\n}\n",
+									"raw": "{\n    \"especialidad\": \"Tenis\",\n    \"id_usuario\": 3\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/usuarios_profesores"
+								"url": {
+									"raw": "http://127.0.0.1:5000/usuarios_profesores",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios_profesores"
+									]
+								}
 							},
 							"response": []
 						}
@@ -277,7 +538,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/planificacion_alumno/1"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificacion_alumno/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificacion_alumno",
+										"1"
+									]
+								}
 							},
 							"response": []
 						}
@@ -291,7 +566,21 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:5000/planificacion_profesor/3"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificacion_profesor/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificacion_profesor",
+										"3"
+									]
+								}
 							},
 							"response": []
 						},
@@ -300,7 +589,21 @@
 							"request": {
 								"method": "DELETE",
 								"header": [],
-								"url": "http://127.0.0.1:5000/planificacion_profesor/4"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificacion_profesor/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificacion_profesor",
+										"4"
+									]
+								}
 							},
 							"response": []
 						},
@@ -318,7 +621,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/planificacion_profesor/4"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificacion_profesor/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificacion_profesor",
+										"4"
+									]
+								}
 							},
 							"response": []
 						},
@@ -327,7 +644,47 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:5000/planificaciones_profesores"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificaciones_profesores",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificaciones_profesores"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "per_page",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "fecha",
+											"value": "06-05-2020",
+											"disabled": true
+										},
+										{
+											"key": "id_profesor",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "id_alumno",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
 							},
 							"response": []
 						},
@@ -338,14 +695,27 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"fecha\": \"05-05-2023\",\n    \"tipo\": \"Privada\",\n    \"lunes\": \"Press\",\n    \"martes\": \"Press\",\n    \"miercoles\": \"\",\n    \"jueves\": \"\",\n    \"viernes\": \"\",\n    \"sabado\": \"\",\n    \"id_profesor\": 2,\n    \"id_alumno\": 3\n}",
+									"raw": "{\n    \"fecha\": \"06-05-2020\",\n    \"tipo\": \"Fuerza\",\n    \"lunes\": \"Pecho\",\n    \"martes\": \"Triceps\",\n    \"miercoles\": \"Hombros\",\n    \"jueves\": \"Piernas\",\n    \"viernes\": \"\",\n    \"sabado\": \"\",\n    \"id_profesor\": 1,\n    \"id_alumno\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "http://127.0.0.1:5000/planificaciones_profesores"
+								"url": {
+									"raw": "http://127.0.0.1:5000/planificaciones_profesores",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"planificaciones_profesores"
+									]
+								}
 							},
 							"response": []
 						}
@@ -361,7 +731,40 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://127.0.0.1:5000/clases"
+						"url": {
+							"raw": "http://127.0.0.1:5000/clases?horario_clase=&sortby_nombre_clase",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"clases"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "horario_clase",
+									"value": ""
+								},
+								{
+									"key": "sortby_nombre_clase",
+									"value": null
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -372,14 +775,27 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre_clase\": \"Fulbo\",\n    \"horario_clase\": \"15/07/2022, 20:30:00\"\n}",
+							"raw": "{\n    \"nombre_clase\": \"tenis\",\n    \"horario_clase\": \"15/08/2023, 21:30:00\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://127.0.0.1:5000/clases"
+						"url": {
+							"raw": "http://127.0.0.1:5000/clases",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"clases"
+							]
+						}
 					},
 					"response": []
 				},
@@ -388,7 +804,21 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://127.0.0.1:5000/clase/1"
+						"url": {
+							"raw": "http://127.0.0.1:5000/clase/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"clase",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -406,7 +836,21 @@
 								}
 							}
 						},
-						"url": "http://127.0.0.1:5000/clase/1"
+						"url": {
+							"raw": "http://127.0.0.1:5000/clase/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"clase",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -424,7 +868,21 @@
 								}
 							}
 						},
-						"url": "http://127.0.0.1:5000/clase/1"
+						"url": {
+							"raw": "http://127.0.0.1:5000/clase/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"clase",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -438,7 +896,21 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://127.0.0.1:5000/pago/1"
+						"url": {
+							"raw": "http://127.0.0.1:5000/pago/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"pago",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -456,7 +928,21 @@
 								}
 							}
 						},
-						"url": "http://127.0.0.1:5000/pago/2"
+						"url": {
+							"raw": "http://127.0.0.1:5000/pago/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"pago",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -479,7 +965,20 @@
 								}
 							}
 						},
-						"url": "http://127.0.0.1:5000/login"
+						"url": {
+							"raw": "http://127.0.0.1:5000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"login"
+							]
+						}
 					},
 					"response": []
 				}

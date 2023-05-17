@@ -33,8 +33,32 @@ class Clase(Resource):
 
 class Clases(Resource):
     def get(self):
-        clases = db.session.query(ClasesModel).all()
-        return jsonify({"clases": [clase.to_json() for clase in clases]})
+        page = 1
+
+        per_page = 10
+        
+        clases = db.session.query(ClasesModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        if request.args.get('horario_clase'):
+            clases=clases.filter(ClasesModel.horario_clase.like("%"+request.args.get('horario_clase')+"%"))
+        
+        if request.args.get('sortby_nombre_clase'):
+            clases=clases.order_by((ClasesModel.nombre_clase))
+  
+        
+
+        clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'clases': [clase.to_json() for clase in clases],
+                  'total': clases.total,
+                  'pages': clases.pages,
+                  'page': page
+                })
+
     
     def post(self):
         clase = ClasesModel.from_json(request.get_json())

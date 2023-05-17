@@ -43,12 +43,35 @@ class PlanificacionProfesor(Resource):
 
 class PlanificacionesProfesores(Resource):
     def get(self):
-        id_profesor = request.args.get("id_profesor")
+        page = 1
+
+        per_page = 10
+        
         planificaciones = db.session.query(PlanificacionesModel)
-        if id_profesor:
-            planificaciones = planificaciones.filter(PlanificacionesModel.id_profesor == id_profesor)
-        planificaciones = planificaciones.all()
-        return jsonify({"planificaciones": [planificacion.to_json() for planificacion in planificaciones]})
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        if request.args.get('fecha'):
+            planificaciones=planificaciones.filter(PlanificacionesModel.fecha.like("%"+request.args.get('fecha')+"%"))
+        
+        if request.args.get('id_profesor'):
+            planificaciones=planificaciones.filter(PlanificacionesModel.id_profesor.like("%"+request.args.get('id_profesor')+"%"))
+
+        if request.args.get('id_alumno'):
+            planificaciones=planificaciones.filter(PlanificacionesModel.id_alumno.like("%"+request.args.get('id_alumno')+"%"))
+
+      
+        
+
+        planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'planificacion': [planificacion.to_json() for planificacion in planificaciones],
+                  'total': planificaciones.total,
+                  'pages': planificaciones.pages,
+                  'page': page
+                })
 
     def post(self):
         planificacion = PlanificacionesModel.from_json(request.get_json())

@@ -4,6 +4,8 @@ from .. import db
 from main.models import UsuariosModel
 from main.models import ProfesoresModel
 from main.models import AlumnosModel
+from main.models import PlanificacionesModel
+from sqlalchemy import desc, func
 
 #Datos de prueba en JSON
 # USUARIOS = {
@@ -44,8 +46,29 @@ class Usuario(Resource):
 
 class Usuarios(Resource):
     def get(self):
-        usuarios = db.session.query(UsuariosModel).all()
-        return jsonify([usuario.to_json() for usuario in usuarios])
+        page = 1
+
+        per_page = 10
+        
+        usuarios = db.session.query(UsuariosModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        if request.args.get('rol'):
+            usuarios=usuarios.filter(UsuariosModel.rol.like("%"+request.args.get('rol')+"%"))
+        
+        if request.args.get('sortby_apellido'):
+            usuarios=usuarios.order_by(desc(UsuariosModel.apellido))
+
+        usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'usuario': [usuario.to_json() for usuario in usuarios],
+                  'total': usuarios.total,
+                  'pages': usuarios.pages,
+                  'page': page
+                })
 
     def post(self):
         usuario = UsuariosModel.from_json(request.get_json())
@@ -58,8 +81,9 @@ class Usuarios(Resource):
 
 class UsuarioAlumno(Resource):
     def get(self, id):
-        usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
-        return usuario_alumno.to_json_complete()
+        def get(self, id):
+            usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
+            return usuario_alumno.to_json_complete()
     
     def delete(self, id):
         usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
@@ -79,8 +103,30 @@ class UsuarioAlumno(Resource):
 
 class UsuariosAlumnos(Resource):
     def get(self):
-        usuarios_alumnos = db.session.query(AlumnosModel).all()
-        return jsonify([usuario_alumno.to_json() for usuario_alumno in usuarios_alumnos])
+        page = 1
+
+        per_page = 10
+        
+        usuarios_a = db.session.query(AlumnosModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        if request.args.get('sortby_nro_socio'):
+            usuarios_a=usuarios_a.order_by(desc(AlumnosModel.nro_socio))
+        
+        if request.args.get('nrplanificaciones'):
+            usuarios_a=usuarios_a.outerjoin(AlumnosModel.planificaciones).group_by(AlumnosModel.nro_socio).having(func.count(PlanificacionesModel.id) >= int(request.args.get('nrplanificaciones')))
+        
+
+        usuarios_a = usuarios_a.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'usuario': [usuario.to_json() for usuario in usuarios_a],
+                  'total': usuarios_a.total,
+                  'pages': usuarios_a.pages,
+                  'page': page
+                })
     
     def post(self):
         usuario_alumno = AlumnosModel.from_json(request.get_json())
@@ -110,8 +156,27 @@ class UsuarioProfesor(Resource):
         
 class UsuariosProfesores(Resource):
     def get(self):
-        usuarios_profesores = db.session.query(ProfesoresModel).all()
-        return jsonify([usuario_profesor.to_json() for usuario_profesor in usuarios_profesores])
+        page = 1
+
+        per_page = 10
+        
+        usuarios_p = db.session.query(ProfesoresModel)
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+        
+        if request.args.get('nrplanificaciones'):
+            usuarios_p=usuarios_p.outerjoin(ProfesoresModel.planificaciones).group_by(ProfesoresModel.especialidad).having(func.count(PlanificacionesModel.id) >= int(request.args.get('nrplanificaciones')))
+        
+
+        usuarios_p = usuarios_p.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify({'usuario_profesor': [usuario.to_json() for usuario in usuarios_p],
+                  'total': usuarios_p.total,
+                  'pages': usuarios_p.pages,
+                  'page': page
+                })
     
     def post(self):
         usuario_profesor = ProfesoresModel.from_json(request.get_json())
