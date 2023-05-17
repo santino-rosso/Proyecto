@@ -4,9 +4,11 @@ from .usuario import Usuarios as UsuariosResource
 from .usuario import UsuarioAlumno as UsuarioAlumnoResource
 from .usuario import UsuariosAlumnos as UsuariosAlumnosResource
 from .usuario import UsuarioProfesor as UsuarioProfesorResource
+from .usuario import UsuariosProfesores as UsuariosProfesoresResource
 from .planificacion import PlanificacionAlumno as PlanificacionAlumnoResource
 from .planificacion import PlanificacionProfesor as PlanificacionProfesorResource
 from .planificacion import PlanificacionesProfesores as PlanificacionesProfesoresResource
-from .profesor import Profesores as ProfesoresResource
+from .clase import Clase as ClaseResource
+from .clase import Clases as ClasesResource
 from .pago import Pago as PagoResource
 from .login import Login as LoginResource

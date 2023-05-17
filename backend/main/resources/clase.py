@@ -1,0 +1,48 @@
+from flask_restful import Resource
+from flask import request, jsonify
+from .. import db
+from main.models import ClasesModel
+
+
+#Datos de prueba en JSON
+# PROFESORES = {
+#     1: {'id_profesor' : '1', 'clase':'futbol' },
+#     2: {'id_profesor': '2', 'clase':'boxeo' }
+# }
+
+
+class Clase(Resource):
+    def get(self, id):
+        clase = db.session.query(ClasesModel).get_or_404(id)
+        return clase.to_json()
+
+    def put(self, id):
+        clase = db.session.query(ClasesModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            setattr(clase, key, value)
+        db.session.add(clase)
+        db.session.commit()
+        return clase.to_json(), 201
+
+    def delete(self, id):
+        clase = db.session.query(ClasesModel).get_or_404(id)
+        db.session.delete(clase)
+        db.session.commit()
+        return '', 204
+
+class Clases(Resource):
+    def get(self):
+        clases = db.session.query(ClasesModel).all()
+        return jsonify({"clases": [clase.to_json() for clase in clases]})
+    
+    def post(self):
+        clase = ClasesModel.from_json(request.get_json())
+        try:
+            db.session.add(clase)
+            db.session.commit()
+        except:
+            return "Formato no correcto", 400
+        return clase.to_json(), 201
+    
+   

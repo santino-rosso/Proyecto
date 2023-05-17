@@ -3,7 +3,7 @@ from datetime import datetime
 
 profesores_clases = db.Table("profesores_clases",
     db.Column("id_clase",db.Integer,db.ForeignKey("clases.id"),primary_key=True),
-    db.Column("id_profesor",db.Integer,db.ForeignKey("profesores.id"),primary_key=True)
+    db.Column("id_profesor",db.Integer,db.ForeignKey("profesores.id_usuario"),primary_key=True)
     )
 
 
@@ -21,6 +21,15 @@ class Clases(db.Model):
             'id': self.id,
             'nombre_clase': str(self.nombre_clase),
             'horario_clase': str(self.horario_clase.strftime("%d/%m/%Y, %H:%M:%S"))
+        }
+        return clases_json
+    
+    def to_json_complete(self):
+        clases_json = {
+            'id': self.id,
+            'nombre_clase': str(self.nombre_clase),
+            'horario_clase': str(self.horario_clase.strftime("%d/%m/%Y, %H:%M:%S")),
+            'profesores': [profesor.to_json() for profesor in self.profesores]
         }
         return clases_json
 

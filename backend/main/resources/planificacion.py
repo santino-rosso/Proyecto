@@ -57,5 +57,5 @@ class PlanificacionesProfesores(Resource):
             db.session.add(planificacion)
             db.session.commit()
         except:
-            return 'Formato no correcto', 400
+            return "Formato no correcto", 400
         return planificacion.to_json(), 201
