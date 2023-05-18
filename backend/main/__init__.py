@@ -4,11 +4,13 @@ from dotenv import load_dotenv
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 
 
 api = Api()
 db = SQLAlchemy()
 migrate = Migrate()
+jwt = JWTManager()
 
 def create_app():
     app = Flask (__name__)
@@ -40,5 +42,13 @@ def create_app():
     api.add_resource(resources.LoginResource, '/login')
 #Iniciaremos los modulos de la app 
 #retornamos la app inicializada
+    
     api.init_app(app)
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES'))
+    jwt.init_app(app)
+
+    from main.auth import routes
+    app.register_blueprint(routes.auth)
+    
     return app

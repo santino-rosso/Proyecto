@@ -86,7 +86,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"rol\": \"Alumno\",\n    \"nombre\": \"Tomas\",\n    \"apellido\": \"Messi\",\n    \"contraseña\": \"delunoalocho\",\n    \"telefono\": 261515896\n}",
+									"raw": "{\n    \"rol\": \"Admin\",\n    \"dni\": 4258271,\n    \"email\":\"holamund11o@gmail.com\",\n    \"nombre\": \"Julian\",\n    \"apellido\": \"alvarez\",\n    \"contraseña\": \"4258577\",\n    \"telefono\": 261517847\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -163,6 +163,13 @@
 									"path": [
 										"usuario",
 										"1"
+									],
+									"query": [
+										{
+											"key": "Authorization",
+											"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -212,7 +219,13 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "",
@@ -588,9 +601,15 @@
 							"name": "eliminar planificacion",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/planificacion_profesor/4",
+									"raw": "http://127.0.0.1:5000/planificacion_profesor/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -601,7 +620,7 @@
 									"port": "5000",
 									"path": [
 										"planificacion_profesor",
-										"4"
+										"1"
 									]
 								}
 							},
@@ -772,10 +791,16 @@
 					"name": "Agregar clase",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre_clase\": \"tenis\",\n    \"horario_clase\": \"15/08/2023, 21:30:00\"\n}",
+							"raw": "{\n    \"nombre_clase\": \"Futbol\",\n    \"horario_clase\": \"16/09/2021, 20:30:00\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -977,6 +1002,66 @@
 							"port": "5000",
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"hola12@gmail.com\",\n    \"contraseña\":\"5859\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
 							]
 						}
 					},

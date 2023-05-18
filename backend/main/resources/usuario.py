@@ -6,7 +6,8 @@ from main.models import ProfesoresModel
 from main.models import AlumnosModel
 from main.models import PlanificacionesModel
 from sqlalchemy import desc, func
-
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 #Datos de prueba en JSON
 # USUARIOS = {
 #     1: {'nombre':'Lionel', 'apellido':'Messi'},
@@ -24,16 +25,20 @@ from sqlalchemy import desc, func
 
 
 class Usuario(Resource):
+    @jwt_required(optional=True)
     def get(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         return usuario.to_json()
     
+
+    @role_required(roles = ["Admin"])
     def delete(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         db.session.delete(usuario)
         db.session.commit()
         return '', 204
     
+    @jwt_required()
     def put(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         data = request.get_json().items()
@@ -45,6 +50,7 @@ class Usuario(Resource):
 
 
 class Usuarios(Resource):
+    @jwt_required()
     def get(self):
         page = 1
 
@@ -69,28 +75,34 @@ class Usuarios(Resource):
                   'pages': usuarios.pages,
                   'page': page
                 })
-
+    
+    @role_required(roles = ["Admin"])
     def post(self):
         usuario = UsuariosModel.from_json(request.get_json())
-        try:
-            db.session.add(usuario)
-            db.session.commit()
-        except:
-            return "Formato no correcto", 400
+        db.session.add(usuario)
+        db.session.commit()
         return usuario.to_json(), 201
 
 class UsuarioAlumno(Resource):
-    def get(self, id):
-        def get(self, id):
-            usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
-            return usuario_alumno.to_json_complete()
     
+    @jwt_required(optional=True)
+    def get(self, id):
+        usuario = db.session.query(AlumnosModel).get_or_404(id)
+        
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return usuario.to_json_complete()
+        else:
+            return usuario.to_json()
+    
+    @role_required(roles = ["Admin", "Profesor"])
     def delete(self, id):
         usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
         db.session.delete(usuario_alumno)
         db.session.commit()
         return '', 204
     
+    @role_required(roles = ["Admin", "Profesor"])
     def put(self, id):
         usuario_alumno = db.session.query(AlumnosModel).get_or_404(id)
         data = request.get_json().items()
@@ -102,6 +114,7 @@ class UsuarioAlumno(Resource):
         
 
 class UsuariosAlumnos(Resource):
+    @jwt_required()
     def get(self):
         page = 1
 
@@ -128,6 +141,7 @@ class UsuariosAlumnos(Resource):
                   'page': page
                 })
     
+    @role_required(roles = ["Admin", "Profesor"])
     def post(self):
         usuario_alumno = AlumnosModel.from_json(request.get_json())
         try:
@@ -141,10 +155,17 @@ class UsuariosAlumnos(Resource):
 
 
 class UsuarioProfesor(Resource):
-    def get(self,id):
-        usuario_profesor = db.session.query(ProfesoresModel).get_or_404(id)
-        return usuario_profesor.to_json_complete()
-    
+    @jwt_required(optional=True)
+    def get(self, id):
+        usuario = db.session.query(ProfesoresModel).get_or_404(id)
+        
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return usuario.to_json_complete()
+        else:
+            return usuario.to_json()
+        
+    @role_required(roles = ["Admin"])
     def put(self, id):
         usuario_profesor = db.session.query(ProfesoresModel).get_or_404(id)
         data = request.get_json().items()
@@ -155,6 +176,7 @@ class UsuarioProfesor(Resource):
         return usuario_profesor.to_json(), 201
         
 class UsuariosProfesores(Resource):
+    @jwt_required(optional=True)
     def get(self):
         page = 1
 
@@ -178,6 +200,7 @@ class UsuariosProfesores(Resource):
                   'page': page
                 })
     
+    @role_required(roles = ["Admin"])
     def post(self):
         usuario_profesor = ProfesoresModel.from_json(request.get_json())
         try:

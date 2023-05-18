@@ -2,6 +2,8 @@ from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
 from main.models import PlanificacionesModel
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 
 #Datos de prueba en JSON
@@ -16,22 +18,26 @@ from main.models import PlanificacionesModel
 
 
 class PlanificacionAlumno(Resource):
+    @jwt_required()
     def get(self, id):
         planificacion = db.session.query(PlanificacionesModel).get_or_404(id)
         return planificacion.to_json()
     
 
 class PlanificacionProfesor(Resource):
+    @jwt_required()
     def get(self, id):
         planificacion = db.session.query(PlanificacionesModel).get_or_404(id)
         return planificacion.to_json()
     
+    @role_required(roles = ["Admin","Profesor"])
     def delete(self, id):
         planificacion = db.session.query(PlanificacionesModel).get_or_404(id)
         db.session.delete(planificacion)
         db.session.commit()
         return '', 204
-
+    
+    @role_required(roles = ["Admin","Profesor"])
     def put(self, id):
         planificacion = db.session.query(PlanificacionesModel).get_or_404(id)
         data = request.get_json().items()
@@ -42,6 +48,7 @@ class PlanificacionProfesor(Resource):
         return planificacion.to_json(), 201
 
 class PlanificacionesProfesores(Resource):
+    @jwt_required()
     def get(self):
         page = 1
 
@@ -72,7 +79,8 @@ class PlanificacionesProfesores(Resource):
                   'pages': planificaciones.pages,
                   'page': page
                 })
-
+    
+    @role_required(roles = ["Admin","Profesor"])
     def post(self):
         planificacion = PlanificacionesModel.from_json(request.get_json())
         print(planificacion)
