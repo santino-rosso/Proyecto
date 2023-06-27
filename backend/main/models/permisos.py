@@ -19,13 +19,13 @@ class Permisos(db.Model):
         }
         return permisos_json
 
-@staticmethod   
-def from_json(permisos_json):
-    id = permisos_json.get('id')
-    rol = permisos_json.get('rol')
-    method = permisos_json.get('method')
-    resource = permisos_json.get('resource')
-    return Permisos(id=id,
-                    rol=rol,
-                    method=method,
-                    resource=resource)
+    @staticmethod   
+    def from_json(permisos_json):
+        id = permisos_json.get('id')
+        rol = permisos_json.get('rol')
+        method = permisos_json.get('method')
+        resource = permisos_json.get('resource')
+        return Permisos(id=id,
+                        rol=rol,
+                        method=method,
+                        resource=resource)

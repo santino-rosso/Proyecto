@@ -20,7 +20,13 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "",
@@ -61,7 +67,7 @@
 										},
 										{
 											"key": "nombre",
-											"value": null,
+											"value": "",
 											"disabled": true
 										},
 										{
@@ -71,7 +77,12 @@
 										},
 										{
 											"key": "sortby_apellido",
-											"value": null,
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
 											"disabled": true
 										}
 									]
@@ -83,10 +94,16 @@
 							"name": "Agregar Usuario",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"rol\": \"Admin\",\n    \"dni\": 4258271,\n    \"email\":\"holamund11o@gmail.com\",\n    \"nombre\": \"Julian\",\n    \"apellido\": \"alvarez\",\n    \"contraseña\": \"4258577\",\n    \"telefono\": 261517847\n}",
+									"raw": "{\n    \"rol\": \"Admin\",\n    \"dni\": 4258595,\n    \"email\":\"hola1234@gmail.com\",\n    \"nombre\": \"Santino\",\n    \"apellido\": \"Tabarez\",\n    \"contraseña\": \"1234\",\n    \"telefono\": 261517876\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -114,9 +131,15 @@
 							"name": "Eliminar usuario",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/usuario/4",
+									"raw": "http://127.0.0.1:5000/usuario/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -127,7 +150,7 @@
 									"port": "5000",
 									"path": [
 										"usuario",
-										"4"
+										"1"
 									]
 								}
 							},
@@ -222,7 +245,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
 										"type": "text"
 									}
 								],
@@ -257,10 +280,16 @@
 							"name": "actualizar usuario_alumno",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"boquita@gmail.com\",\n    \"dni\": 12515987,\n    \"nro_socio\": 35,\n    \"id_usuario\": 2\n    }",
+									"raw": "{\n    \"email\": \"boquita@gmail.com\",\n    \"dni\": 12515988,\n    \"nro_socio\": 35,\n    \"id_usuario\": 2\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -289,13 +318,19 @@
 							"name": "eliminar usuario_alumno",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://127.0.0.1:5000/usuario_alumno/1",
+									"raw": "http://127.0.0.1:5000/usuario_alumno/2",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -306,7 +341,7 @@
 									"port": "5000",
 									"path": [
 										"usuario_alumno",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -360,10 +395,16 @@
 							"name": "agregar usuario_alumno",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"holamundo@gmail.com\",\n    \"dni\": 4e51888,\n    \"nro_socio\": 37,\n    \"id_usuario\": 5\n    }",
+									"raw": "{\n    \n    \"nro_socio\": 2,\n    \"id_usuario\": 5\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -497,10 +538,16 @@
 							"name": "Agregar usuario_profesor",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"especialidad\": \"Tenis\",\n    \"id_usuario\": 3\n}\n",
+									"raw": "{\n    \"especialidad\": \"Pilates\",\n    \"id_usuario\": 10\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -711,10 +758,16 @@
 							"name": "agregar planificacion",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NDQyMTc5OSwianRpIjoiOTMyNmI2MzctZjIzOC00MDE5LWExZTItZjhlNGQwZDg1MDgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MywibmJmIjoxNjg0NDIxNzk5LCJleHAiOjE2ODQ0MjUzOTksInJvbCI6IkFkbWluIiwiaWQiOjMsImVtYWlsIjoiaG9sYW11bmQxMW9AZ21haWwuY29tIn0.VtBrjEKEHPKIX3dCcQJ8fGoLUHRsG079---A-0xuEYQ",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"fecha\": \"06-05-2020\",\n    \"tipo\": \"Fuerza\",\n    \"lunes\": \"Pecho\",\n    \"martes\": \"Triceps\",\n    \"miercoles\": \"Hombros\",\n    \"jueves\": \"Piernas\",\n    \"viernes\": \"\",\n    \"sabado\": \"\",\n    \"id_profesor\": 1,\n    \"id_alumno\": 2\n}",
+									"raw": "{\n    \"fecha\": \"06-05-2010\",\n    \"tipo\": \"Fuerza\",\n    \"lunes\": \"Pecho\",\n    \"martes\": \"Triceps\",\n    \"miercoles\": \"Hombros\",\n    \"jueves\": \"Biceps\",\n    \"viernes\": \"\",\n    \"sabado\": \"\",\n    \"id_profesor\": 6,\n    \"id_alumno\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1019,7 +1072,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"hola12@gmail.com\",\n    \"contraseña\":\"5859\"\n}",
+							"raw": "{\n    \"email\":\"hola1234@gmail.com\",\n    \"contraseña\":\"1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1049,6 +1102,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rol\": \"Profesor\",\n    \"dni\": 428894,\n    \"email\":\"rodrigo.bartolome@um.edu.ar\",\n    \"nombre\": \"Rodrigo\",\n    \"apellido\": \"Bartolome\",\n    \"contraseña\": \"585958\",\n    \"telefono\": 2615178846\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/auth/register",
 							"protocol": "http",
@@ -1062,6 +1124,166 @@
 							"path": [
 								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permisos",
+			"item": [
+				{
+					"name": "obtener permiso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/permiso/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"permiso",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar permiso",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource\" : \"UsuarioAlumno\",\n    \"method\" : \"DELETE\",\n    \"rol\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/permiso/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"permiso",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar permiso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/permiso/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"permiso",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista de permiso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/permisos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"permisos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar permiso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzgyNjkyNiwianRpIjoiMjQ5MjQwMzktYTQ0NC00MzU0LWE3NzktMGYxZDAyZTFjYzU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTY4NzgyNjkyNiwiZXhwIjoxNjg3ODMwNTI2LCJyb2wiOiJBZG1pbiIsImlkIjoxMCwiZW1haWwiOiJob2xhMTIzNEBnbWFpbC5jb20ifQ.lI6VQKcY9Aev9yWb7TMaljiTNqcUFraP5RF8U0KUvjs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resource\" :\"USUARIOALUMNO\",\n    \"method\" :\"DELETE\",\n    \"rol\":\"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/permisos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"permisos"
 							]
 						}
 					},

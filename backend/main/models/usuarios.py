@@ -12,7 +12,6 @@ class Usuarios(db.Model):
     telefono= db.Column(db.Integer, nullable=False)
     profesor= db.relationship("Profesores", uselist=False,back_populates="usuario",cascade="all, delete-orphan",single_parent=True)
     alumno=db.relationship("Alumnos", uselist=False, back_populates="usuario", cascade="all, delete-orphan",single_parent=True)
-    permiso=db.relationship("Permisos", uselist=False, back_populates="usuario", cascade="all, delete-orphan",single_parent=True)
     #Getter de la contraseña plana no permite leerla
     @property
     def plain_contraseña(self):

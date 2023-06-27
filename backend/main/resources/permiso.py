@@ -8,13 +8,13 @@ from main.auth.decorators import role_required
 
 class Permiso(Resource):
     @jwt_required()
-    @role_required(["admin"])
+    @role_required(["Admin"])
     def get(self, id):
         permiso = db.session.query(PermisosModel).get_or_404(id)
-        return permiso.json()
+        return permiso.to_json()
     
     @jwt_required()
-    @role_required(["admin"])
+    @role_required(["Admin"])
     def delete(self, id):
         permiso = db.session.query(PermisosModel).get_or_404(id)
         db.session.delete(permiso)
@@ -22,7 +22,7 @@ class Permiso(Resource):
         return '', 204
 
     @jwt_required()
-    @role_required(["admin"])
+    @role_required(["Admin"])
     def put(self, id):
         permiso = db.session.query(PermisosModel).get_or_404(id)
         data = request.get_json().items()
@@ -30,11 +30,11 @@ class Permiso(Resource):
             setattr(permiso, key, value)
         db.session.add(permiso)
         db.session.commit()
-        return permiso.json(), 201
+        return permiso.to_json(), 201
     
 class Permisos(Resource):
     @jwt_required()
-    @role_required(["admin"])
+    @role_required(["Admin"])
     def get(self):
         page = 1
         per_page = 10
@@ -50,7 +50,7 @@ class Permisos(Resource):
         permisos = permisos.paginate(page=page, per_page=per_page, error_out=False, max_per_page=10)   
 
 
-        return jsonify({'permiso': [permiso.json() for permiso in permisos],
+        return jsonify({'permiso': [permiso.to_json() for permiso in permisos],
             'total': permisos.total,
             'pages': permisos.pages,
             'page': page
@@ -58,7 +58,6 @@ class Permisos(Resource):
 
 
     @jwt_required()
-    @role_required(["admin"])
     def post(self):
         permiso = PermisosModel.from_json(request.get_json())
         try:
@@ -66,4 +65,4 @@ class Permisos(Resource):
             db.session.commit()
         except:
             return "Formato no correcto", 400
-        return permiso.json(), 201
+        return permiso.to_json(), 201
