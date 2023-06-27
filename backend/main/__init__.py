@@ -41,6 +41,8 @@ def create_app():
     api.add_resource(resources.ClaseResource, '/clase/<id>')
     api.add_resource(resources.PagoResource, '/pago/<id>')
     api.add_resource(resources.LoginResource, '/login')
+    api.add_resource(resources.PermisoResource, '/permiso/<id>')
+    api.add_resource(resources.PermisosResource, '/permisos')
 #Iniciaremos los modulos de la app 
 #retornamos la app inicializada
     

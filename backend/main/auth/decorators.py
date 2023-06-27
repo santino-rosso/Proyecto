@@ -1,8 +1,9 @@
 from .. import jwt
-from flask import jsonify
+from flask import jsonify, request
 from flask_jwt_extended import verify_jwt_in_request, get_jwt
 from functools import wraps
-
+from  main.models import PermisosModel
+from .. import db
 #Decorador para restringir el acceso a Profesores/Alumnos por rol
 def role_required(roles):
     def decorator(fn):
@@ -11,10 +12,17 @@ def role_required(roles):
             verify_jwt_in_request()
             #Obtener claims de adentro del JWT
             claims = get_jwt()
+            resource = request.endpoint
+            method = fn.__name__
             #Verificar que el rol sea uno de los permitidos por la ruta
-            if claims['rol'] in roles :
-                #Ejecutar función
-                return fn(*args, **kwargs)
+            if claims['rol'] in roles:
+                rol = claims['rol']
+                verify = db.session.query(PermisosModel).filter_by(rol=rol, recurso=resource, metodo=method).first()
+                if verify:
+                    #Ejecutar función
+                    return fn(*args, **kwargs)
+                else:
+                    return 'Rol sin permisos de acceso al recurso', 403
             else:
                 return 'Rol sin permisos de acceso al recurso', 403
         return wrapper

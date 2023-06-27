@@ -12,3 +12,5 @@ from .clase import Clase as ClaseResource
 from .clase import Clases as ClasesResource
 from .pago import Pago as PagoResource
 from .login import Login as LoginResource
+from .permiso import Permiso as PermisoResource
+from .permiso import Permisos as PermisosResource
