@@ -25,9 +25,6 @@
                 <a class="navbar-brand" href="index.html"><img src="imagenes/logo.png"style="max-height: 2.7em;" alt="Fit Club"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -40,7 +37,7 @@
                         <h2 class="mt-0">Iniciar sesión</h2>
                         <hr class="divider" />
                         <p class="text-muted mb-5">¿Ya tienes cuenta? ¡Inicia sesión!</p>
-                        <div class="d-grid"><a href=""></a><button class="btn btn-primary btn-xl disabled" id="submitButton">Inicia sesión</button></div>
+                        <a href="login.html"><button class="btn btn-primary btn-xl" id="submitButton">Inicia sesión</button></a>
                         <p class="text-muted mb-5"></p>
                     </div>
                 </div>
@@ -81,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="@alumno.com si eres un alumno / @profesor.com si eres un profesor" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                 <label for="email">Mail</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un mail.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Mail no válido.</div>
@@ -132,16 +129,10 @@
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Enviar</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit">Enviar</button></div>
                         </form>
                     </div>
                 </div>
-                <!-- <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+54 261 12312132</div>
-                    </div>
-                </div> -->
             </div>
         </section>
 <footer class="bg-light py-5">
