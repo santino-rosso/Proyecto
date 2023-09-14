@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,88 +20,79 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body style="max-width: 100vw;">
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="index.html"><img src="imagenes/logo.png" style="max-height: 2.7em;"
-          alt="Fit Club"></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto my-2 my-lg-0">
-          <li class="nav-item"><a href="alumnoPerfil.html"><button class="btn btn-primary"
-                type="submit">Perfil</button></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <section class="page-section" id="perfil">
-    <div>
-      <div class="container mt-3">
-        <div class="row justify-content-center text-center">
-          <div class="col-11">
-            <h2>Modificar Perfil: Tiago Licciardi</h2>
-          </div>
+        <a class="navbar-brand" href="index.html"><img src="imagenes/logo.png" style="max-height: 2.7em;"
+                alt="Fit Club"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item "><a class="text-decoration-none" href="alumnoCronograma.html"><h5>Cronograma</h5></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="text-decoration-none"
+                        href="alumnoPlanificaciones.html"><h5>Planificaciones</h5></a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="alumnoPerfil.html"><button class="btn btn-primary"
+                            type="submit">Perfil</button></a></li>
+            </ul>
         </div>
-      </div>
-      <div class="container">
-        <div class="row justify-content-center text-center p-2">
-          <div class="col-11">
-            <table class="table table-bordered table-striped table-responsive">
-              <thead>
-                <tr>
-                  <th scope="col">Clave</th>
-                  <th scope="col">Valor</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Nombre</td>
-                  <td><input class="text-center" type="text" value="Tiago"></td>
-                </tr>
-                <tr>
-                  <td>Apellido</td>
-                  <td><input class="text-center" type="text" value="Licciardi"></td>
-                </tr>
-                <tr>
-                  <td>Email</td>
-                  <td><input class="text-center" type="email" value="xxxx1@alumno.com"></td>
-                </tr>
-                <tr>
-                  <td>Telefono</td>
-                  <td><input class="text-center" type="number" value="2619282121"></td>
-                </tr>
-                <tr>
-                  <td>Dni</td>
-                  <td><input class="text-center" type="number" value="42821903"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
+</nav>
 
-    <div class="container d-flex justify-content-center">
-      <div class="d-flex justify-content-center text-center">
-          <a href="alumnoPerfil.html"><button class="btn btn-outline-success mx-2">Cancelar</button></a>
-      </div>
-      <div class="d-flex justify-content-center text-center">
-          <button class="btn btn-outline-success mx-2 ">Confirmar cambios</button>
-      </div>
-  </div>
-    <div>
-  </section>
-  <footer class="bg-light py-5 fixed-bottom">
-    <div class="container px-4 px-lg-5">
-      <div class="small text-center text-muted">Copyright &copy; 2023 - Fit Club</div>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
+    <section class="container" style="margin-top: 8rem;">
+      <h2 class="text-center mb-5">Modificar Perfil: Tiago Licciardi</h2>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Clave</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nombre</td>
+            <td><input class="form-control text-center" type="text" value="Tiago"></td>
+          </tr>
+          <tr>
+            <td>Apellido</td>
+            <td><input class="form-control text-center" type="text" value="Licciardi"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input class="form-control text-center" type="email" value="xxxx1@alumno.com"></td>
+          </tr>
+          <tr>
+            <td>Telefono</td>
+            <td><input class="form-control text-center" type="number" value="2619282121"></td>
+          </tr>
+          <tr>
+            <td>Dni</td>
+            <td><input class="form-control text-center" type="number" value="42821903"></td>
+          </tr>
+        </tbody>
+      </table>
 
-</html>
+      <div class="text-center">
+        <a href="alumnoPerfil.html" class="btn btn-outline-success mx-2">Cancelar</a>
+        <button class="btn btn-outline-success mx-2">Confirmar cambios</button>
+      </div>
+    </section>
+
+    <footer class="bg-light py-5 fixed-bottom">
+      <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2023 - Fit Club</div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  </body>
+  
+  </html>
