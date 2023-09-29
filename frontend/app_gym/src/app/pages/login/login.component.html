@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" routerLink="/home"><img src="assets/imagenes/logo.png" style="max-height: 2.7em;"
+                alt="Fit Club"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a routerLink="/registrarse"><button class="btn btn-primary"
+                            type="submit">Registrarse</button></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contact-->
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center mt-5 mb-2">
+                <h2 class="mt-0">Inicia Sesión</h2>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="form-floating mt-1 mb-2">
+                        <input class="form-control" id="email" type="email" placeholder=""
+                            data-sb-validations="required,email" />
+                        <label for="email">Mail</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un mail.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Mail no válido.</div>
+                        <div class="text-center mt-2">
+                            <p class="text-muted">@alumno.com si eres un alumno / <br> @profesor.com si eres un
+                                profesor</p>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="Password" type="Password" placeholder=""
+                            data-sb-validations="required,Password" />
+                        <label for="Password">Contraseña</label>
+                        <div class="invalid-feedback" data-sb-feedback="Password:required">Se require un contraseña.
+                        </div>
+                        <div class="invalid-feedback" data-sb-feedback="Password:Password">Contraseña no valida.
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a class="text-muted" routerLink="/#contact">Olvidaste tu contraseña?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-light py-5 fixed-bottom">
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2023 - Fit Club</div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
