@@ -1,27 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" routerLink="/home"><img src="assets/imagenes/logo.png" style="max-height: 2.7em;"
-                alt="Fit Club"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expande="false"
-            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item "><a class="text-decoration-none" routerLink="/alumno_cronograma"><h5>Cronograma</h5></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="text-decoration-none"
-                        routerLink="/alumno_planificaciones"><h5>Planificaciones</h5></a></li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a routerLink="/alumno_perfil"><button class="btn btn-primary"
-                            type="submit">Perfil</button></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<app-nav-alumno></app-nav-alumno>
 <section style="padding: 0; margin-top: 5rem;">
     <div class="row" style="margin-top: 7rem;">
         <div class="col-md-8">
@@ -107,35 +84,5 @@
         </div>
     </div>
 </section>
-<section class="mt-2">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="container-fluid">
-                <div class="text-center">
-                    <div class="col-9 mx-auto">
-                        <h3 class="text-center mt-2">Entrena fuerte!</h3>
-                        <p class="mx-auto mt-2">Entrenar en el gimnasio no es solo una actividad física, es una
-                            inversión en tu salud y bienestar en general. Los beneficios van más allá de la
-                            apariencia física y se extienden a tu mente, cuerpo y calidad de vida en general. ¡Así
-                            que adelante, ponte en movimiento y disfruta de los innumerables beneficios que el
-                            gimnasio tiene para ofrecer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="container-fluid">
-                <div class="text-center mb-3">
-                    <div class="col-12 mx-auto" style="margin-bottom: 5rem;">
-                        <h3 class="text-center mt-2">Cumplí tus objetivos!</h3>
-                        <p class="mt-2 px-1">"El éxito en el gimnasio comienza con la voluntad de intentarlo una vez
-                            más." Los beneficios van más allá de la apariencia física y se extienden a tu mente,
-                            cuerpo y calidad de vida en general.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<app-footer>
-</app-footer>
+<app-frases></app-frases>
+<app-footer></app-footer>

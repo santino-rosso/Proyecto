@@ -22,6 +22,11 @@ import { ProfesorPlanificacionParticularEditarComponent } from './pages/profesor
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavAdminComponent } from './components/nav-admin/nav-admin.component';
+import { NavAlumnoComponent } from './components/nav-alumno/nav-alumno.component';
+import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-admin.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import { FrasesComponent } from './components/frases/frases.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { FooterComponent } from './components/footer/footer.component';
     ProfesorPlanificacionParticularEditarComponent,
     RegistrarseComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    NavAdminComponent,
+    NavAlumnoComponent,
+    NavRegisAdminComponent,
+    EditarUsuarioComponent,
+    FrasesComponent
   ],
   imports: [
     BrowserModule,
