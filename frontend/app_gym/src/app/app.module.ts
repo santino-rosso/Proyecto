@@ -28,6 +28,8 @@ import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-a
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { FrasesComponent } from './components/frases/frases.component';
 
+import {HttpClientModule} from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,8 @@ import { FrasesComponent } from './components/frases/frases.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
