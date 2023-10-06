@@ -14,15 +14,15 @@ export class LoginComponent {
    ) {}
 
   login(dataLogin:any = {}){ 
-    console.log('Comprobando credenciales')
+    console.log('Comprobando credenciales');
     this.authService.login().subscribe({
       next: (rta:any) => {
         alert("Login exitoso");
-        console.log('Respuesta login: ', rta)
+        console.log('Respuesta login: ', rta);
       }, error:(error) => {
 
       }, complete: () => {
-        console.log('Finalizado')
+        console.log('Finalizado');
       }
     })
   }

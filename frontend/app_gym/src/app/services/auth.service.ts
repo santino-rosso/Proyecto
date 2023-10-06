@@ -15,7 +15,7 @@ export class AuthService {
   ) { }
 
   login(): Observable<any> {
-    let dataLogin = {mail: "hola1234@gmail.com", password: "1234"}
+    let dataLogin = {email: "hola1234@gmail.com", contraseña: "1234"}
     return this.httpClient.post(this.url + '/auth/login',dataLogin).pipe(take(1));
   }
 }
