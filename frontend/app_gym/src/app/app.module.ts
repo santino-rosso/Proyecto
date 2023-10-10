@@ -28,7 +28,9 @@ import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-a
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { FrasesComponent } from './components/frases/frases.component';
 
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import {HttpClientModule} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

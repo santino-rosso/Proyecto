@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-alumno-perfil',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AlumnoPerfilComponent {
 
+  constructor(
+    private authService: AuthService
+  ){}
+
+  cerrarSesion(){
+    this.authService.logout();
+  }
 }

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-admin.component.css']
 })
 export class NavAdminComponent {
-
+  
 }

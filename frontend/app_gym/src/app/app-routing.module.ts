@@ -17,24 +17,25 @@ import { ProfesorPlanificacionParticularComponent } from "./pages/profesor-plani
 import {  ProfesorPlanificacionParticularEditarComponent } from "./pages/profesor-planificacion-particular-editar/profesor-planificacion-particular-editar.component";
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
 import { ProfesorPlanificacionesComponent } from "./pages/profesor-planificaciones/profesor-planificaciones.component";
+import { authsessionGuard } from './guards/authsession.guard';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin_alumno', component: AdminAlumnoComponent },
-  { path: 'admin_editar_alumno', component: AdminEditarAlumnoComponent },
-  { path: 'admin_profesor', component: AdminProfesorComponent },
-  { path: 'admin_editar_profesor', component: AdminEditarProfesorComponent },
-  { path: 'alumno_cronograma', component: AlumnoCronogramaComponent },
-  { path: 'alumno_perfil', component: AlumnoPerfilComponent },
-  { path: 'alumno_perfil_modif', component: AlumnoPerfilModifComponent },
-  { path: 'alumno_planificaciones', component: AlumnoPlanificacionesComponent },
-  { path: 'profesor_perfil', component: ProfesorPerfilComponent },
-  { path: 'profesor_perfil_modif', component: ProfesorPerfilModifComponent },
-  { path: 'profesor_planificacion_particular', component: ProfesorPlanificacionParticularComponent },
-  { path: 'profesor_planificacion_particular_editar', component: ProfesorPlanificacionParticularEditarComponent },
+  { path: 'admin', component: AdminComponent ,canActivate:[authsessionGuard]},
+  { path: 'admin_alumno', component: AdminAlumnoComponent ,canActivate:[authsessionGuard] },
+  { path: 'admin_editar_alumno', component: AdminEditarAlumnoComponent ,canActivate:[authsessionGuard]},
+  { path: 'admin_profesor', component: AdminProfesorComponent ,canActivate:[authsessionGuard]},
+  { path: 'admin_editar_profesor', component: AdminEditarProfesorComponent,canActivate:[authsessionGuard] },
+  { path: 'alumno_cronograma', component: AlumnoCronogramaComponent,canActivate:[authsessionGuard] },
+  { path: 'alumno_perfil', component: AlumnoPerfilComponent,canActivate:[authsessionGuard] },
+  { path: 'alumno_perfil_modif', component: AlumnoPerfilModifComponent,canActivate:[authsessionGuard] },
+  { path: 'alumno_planificaciones', component: AlumnoPlanificacionesComponent,canActivate:[authsessionGuard] },
+  { path: 'profesor_perfil', component: ProfesorPerfilComponent,canActivate:[authsessionGuard] },
+  { path: 'profesor_perfil_modif', component: ProfesorPerfilModifComponent,canActivate:[authsessionGuard] },
+  { path: 'profesor_planificacion_particular', component: ProfesorPlanificacionParticularComponent,canActivate:[authsessionGuard] },
+  { path: 'profesor_planificacion_particular_editar', component: ProfesorPlanificacionParticularEditarComponent,canActivate:[authsessionGuard] },
   { path: 'registrarse', component: RegistrarseComponent },
-  { path: 'profesor_planificaciones', component: ProfesorPlanificacionesComponent },
+  { path: 'profesor_planificaciones', component: ProfesorPlanificacionesComponent ,canActivate:[authsessionGuard]},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `first-component`
   { path: '**', redirectTo: '/home' },
 ];
