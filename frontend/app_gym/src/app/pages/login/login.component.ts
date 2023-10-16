@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import jwtDecode, {JwtDecodeOptions} from 'jwt-decode';
+
 
 @Component ({
   selector: 'app-login',
@@ -33,10 +35,14 @@ export class LoginComponent {
         alert("Login exitoso");
         console.log('Respuesta login: ',rta.access_token);
         localStorage.setItem('token', rta.access_token);
-        
-      }, error:(error) => {
+        var decodedPayload: any = jwtDecode(rta.access_token);
+        var userRole = decodedPayload['rol'];
+        localStorage.setItem('rol', userRole);
+      },
+          error:(error) => {
           alert('Credenciales incorectas');
           localStorage.removeItem('token');
+          localStorage.removeItem('rol')
       }, complete: () => {
         console.log('Finalizado');
       }
