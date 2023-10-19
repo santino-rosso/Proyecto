@@ -18,7 +18,6 @@ export class RegistrarseComponent {
     ) {}
     ngOnInit() {
       this.registerForm = this.formBuilder.group({
-        rol: ['', Validators.required],
         dni: ['', Validators.required],
         email: ['', Validators.required],
         nombre: ['', Validators.required],

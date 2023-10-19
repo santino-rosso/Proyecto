@@ -2,7 +2,7 @@ from .. import db
 from . import UsuariosModel
 
 class Alumnos(db.Model):
-    nro_socio = db.Column(db.Integer, nullable=False)
+    nro_socio = db.Column(db.Integer, autoincrement=True, nullable=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), primary_key=True)
 
     usuario = db.relationship("Usuarios", uselist=False, back_populates="alumno", cascade = "all, delete-orphan", single_parent=True)
@@ -35,3 +35,4 @@ class Alumnos(db.Model):
         return Alumnos(nro_socio = nro_socio,
                     id_usuario = id_usuario
                     )
+    
