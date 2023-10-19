@@ -21,6 +21,12 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('rol')
     this.router.navigate(['/','home']);
   }
+
+  register(userData: any): Observable<any> {
+    return this.httpClient.post(this.url + '/auth/register', userData).pipe(take(1));
+  }
+  
 }

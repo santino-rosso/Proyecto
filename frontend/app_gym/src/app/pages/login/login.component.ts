@@ -38,6 +38,17 @@ export class LoginComponent {
         var decodedPayload: any = jwtDecode(rta.access_token);
         var userRole = decodedPayload['rol'];
         localStorage.setItem('rol', userRole);
+        
+        if (userRole === 'Admin') {
+          this.router.navigate(['/admin']);
+        } else if (userRole === 'Profesor') {
+          this.router.navigate(['/profesor_planificaciones']); 
+        } else if (userRole === 'Alumno') {
+          this.router.navigate(['/alumno_cronograma']);
+        }  else {
+          this.router.navigate(['/home']); 
+        }
+        
       },
           error:(error) => {
           alert('Credenciales incorectas');
