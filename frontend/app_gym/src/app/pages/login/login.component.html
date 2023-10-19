@@ -24,29 +24,26 @@
         </div>
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
             <div class="col-lg-6">
-                <form [formGroup]="loginForm" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form [formGroup]="loginForm">
                     <div class="form-floating mt-1 mb-2">
-                        <input class="form-control" id="email" type="email" formControlName="email" placeholder="Tu email" data-sb-validations="required,email" />
+                        <input class="form-control"  type="email" formControlName="email" placeholder="Tu email"/>
                         <label for="email">Mail</label>
-                        <!-- <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un mail.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Mail no válido.</div> -->
+        
                         <div class="text-center mt-2">
                             <p class="text-muted">@alumno.com si eres un alumno / <br> @profesor.com si eres un
                                 profesor</p>
                         </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="Password" type="Password" formControlName="contraseña" placeholder="" data-sb-validations="required,Password" />
+                        <input class="form-control"  type="Password" formControlName="contraseña" placeholder=""/>
                         <label for="Password">Contraseña</label>
-                        <!-- <div class="invalid-feedback" data-sb-feedback="Password:required">Se require un contraseña.
-                        </div>
-                        <div class="invalid-feedback" data-sb-feedback="Password:Password">Contraseña no valida.
-                        </div> -->
+                        
                     </div>
+                    
                     <div class="text-center">
                         <a class="text-muted" routerLink="/#contact">Olvidaste tu contraseña?</a>
                     </div>
-                    <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton"
+                    <div class="d-grid"><button class="btn btn-primary btn-xl"
                         type="button" (click)="submit()">Iniciar</button>
                     </div>
                 </form>
