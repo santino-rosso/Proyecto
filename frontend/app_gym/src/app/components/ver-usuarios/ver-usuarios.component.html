@@ -73,7 +73,7 @@
     </div>
   </div>
   
-  <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,23 +84,23 @@
                 <form>
                     <div class="mb-3">
                         <label for="rol" class="form-label">rol</label>
-                        <input type="text" class="form-control" id="rol">
+                        <input type="text" class="form-control" id="rol" name="id" [(ngModel)]="usuarioaEdi.rol">
                     </div>
                     <div class="mb-3">
                         <label for="nombre" class="form-label">nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuarioaEdi.nombre">
                     </div>
                     <div class="mb-3">
                         <label for="apellido" class="form-label">apellido</label>
-                        <input type="text" class="form-control" id="apellido">
+                        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuarioaEdi.apellido">
                     </div>
                     <div class="mb-3">
-                        <label for="contrasena" class="form-label">contrasena</label>
-                        <input type="text" class="form-control" id="contrasena">
+                        <label for="contraseña" class="form-label">contraseña</label>
+                        <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label">telefono</label>
-                        <input type="tel" class="form-control" id="telefono">
+                        <input type="tel" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuarioaEdi.telefono">
                     </div>
                 </form>
             </div>
@@ -110,4 +110,49 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> -->
+  <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para editar un usuario -->
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuarioaEdi.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuarioaEdi.apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuarioaEdi.email">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="number" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuarioaEdi.telefono">
+                    </div>
+                    <div class="mb-3">
+                      <label for="rol" class="form-label">Rol</label>
+                      <input type="text" class="form-control" id="rol" name="rol" [(ngModel)]="usuarioaEdi.rol">
+                  </div>
+                  <div class="mb-3">
+                    <label for="contraseña" class="form-label">Contraseña</label>
+                    <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btn-success" (click)="editarUsuario()" data-bs-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

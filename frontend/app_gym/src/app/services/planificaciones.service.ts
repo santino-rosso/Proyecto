@@ -36,7 +36,7 @@ export class PlanificacionesService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
-    return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&%${id_alumno}&`, { headers: headers });
+    return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&id_alumno=${id_alumno}&`, { headers: headers });
   }
 
 }

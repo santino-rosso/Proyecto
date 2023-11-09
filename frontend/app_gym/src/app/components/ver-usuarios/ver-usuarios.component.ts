@@ -12,29 +12,14 @@ export class VerUsuariosComponent {
   currentPage: number = 1;
   totalPages: number = 1;
   usuarioaEdi: any = {
-    dni: null,
-    nombre: '',
-    apellido: '',
-    email: '',
-    contraseña: '',
-    telefono: null,
-    rol: '',
+      "rol": "",
+      "nombre": "",
+      "apellido": "",
+      "contraseña": "",
+      "telefono": null,
+      "email": ""
   };
-  selectedRole: string = 'todos';
-  // arrayUsuarios = [
-  //   {
-  //     id: 1,
-  //     nombre:' Usuario 1'
-  //   },
-  //   {
-  //     id: 2,
-  //     nombre:' Usuario 2'
-  //   },
-  //   {
-  //     id: 3,
-  //     nombre:' Usuario 3'
-  //   }
-  // ];
+
   
   constructor(
     private usuariosService: UsuariosService,
@@ -70,7 +55,16 @@ export class VerUsuariosComponent {
   }
 
   editarUsuario() {
-    this.usuariosService.putUsuario(this.usuarioaEdi.id, this.usuarioEditar).subscribe((data:any) => {
+    console.log(this.usuarioaEdi)
+    const usuarioEditado = {
+      nombre: this.usuarioaEdi.nombre, 
+      apellido: this.usuarioaEdi.apellido,
+      contraseña: this.usuarioaEdi.contraseña,
+      rol: this.usuarioaEdi.rol,
+      dni: this.usuarioaEdi.dni,
+      email: this.usuarioaEdi.email
+    };
+    this.usuariosService.putUsuario(this.usuarioaEdi.id, usuarioEditado).subscribe((data:any) => {
       console.log('Usuario editado', data);
       this.ngOnInit();
     

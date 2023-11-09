@@ -37,7 +37,9 @@ export class LoginComponent {
         localStorage.setItem('token', rta.access_token);
         var decodedPayload: any = jwtDecode(rta.access_token);
         var userRole = decodedPayload['rol'];
+        var idUsuario = decodedPayload['id']
         localStorage.setItem('rol', userRole);
+        localStorage.setItem('id', idUsuario );
         
         if (userRole === 'Admin') {
           this.router.navigate(['/admin']);
@@ -54,6 +56,7 @@ export class LoginComponent {
           alert('Credenciales incorectas');
           localStorage.removeItem('token');
           localStorage.removeItem('rol')
+          localStorage.removeItem('id')
       }, complete: () => {
         console.log('Finalizado');
       }
