@@ -28,10 +28,11 @@ import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-a
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { FrasesComponent } from './components/frases/frases.component';
 import { VerUsuariosComponent } from './components/ver-usuarios/ver-usuarios.component';
-
+import { VerPlanificacionComponent } from './components/ver-planificacion/ver-planificacion.component';
 import { HttpClientModule } from '@angular/common/http'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavRegisAdminComponent,
     EditarUsuarioComponent,
     VerUsuariosComponent,
-    FrasesComponent
+    FrasesComponent,
+    VerPlanificacionComponent,
   ],
   imports: [
     BrowserModule,

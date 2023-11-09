@@ -11,7 +11,16 @@ export class VerUsuariosComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
-  usuarioaEdi: any;
+  usuarioaEdi: any = {
+    dni: null,
+    nombre: '',
+    apellido: '',
+    email: '',
+    contraseña: '',
+    telefono: null,
+    rol: '',
+  };
+  selectedRole: string = 'todos';
   // arrayUsuarios = [
   //   {
   //     id: 1,
@@ -74,4 +83,25 @@ export class VerUsuariosComponent {
       this.ngOnInit();
     })
   }
+
+  
+  filtrarPorRol(rol: string) {
+    if (rol === 'Todos') {
+      // Si se selecciona 'Todos', cargar todos los usuarios
+      this.ngOnInit();
+    } else {
+      // Filtrar por el rol seleccionado
+      this.usuariosService.getUsersByRol(this.currentPage, rol).subscribe((data: any) => {
+        console.log('JSON data:', data);
+        this.arrayUsuarios = data.usuario;
+        this.totalPages = data.pages;
+      });
+    }
+  }
+
+  Reiniciar() {
+    this.currentPage = 1;
+    this.ngOnInit();
+  }
+  
 }
