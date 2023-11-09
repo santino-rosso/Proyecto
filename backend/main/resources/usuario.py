@@ -38,7 +38,7 @@ class Usuario(Resource):
         db.session.commit()
         return '', 204
     
-    @jwt_required()
+    
     def put(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         data = request.get_json().items()

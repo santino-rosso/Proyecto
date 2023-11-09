@@ -27,10 +27,12 @@ import { NavAlumnoComponent } from './components/nav-alumno/nav-alumno.component
 import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-admin.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { FrasesComponent } from './components/frases/frases.component';
+import { VerUsuariosComponent } from './components/ver-usuarios/ver-usuarios.component';
 
 import { HttpClientModule } from '@angular/common/http'
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     NavAlumnoComponent,
     NavRegisAdminComponent,
     EditarUsuarioComponent,
+    VerUsuariosComponent,
     FrasesComponent
   ],
   imports: [

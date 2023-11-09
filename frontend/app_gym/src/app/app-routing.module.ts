@@ -18,6 +18,7 @@ import {  ProfesorPlanificacionParticularEditarComponent } from "./pages/profeso
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
 import { ProfesorPlanificacionesComponent } from "./pages/profesor-planificaciones/profesor-planificaciones.component";
 import { authsessionGuard } from './guards/authsession.guard';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
