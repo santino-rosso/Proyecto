@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 import { PlanificacionesService } from 'src/app/services/planificaciones.service';
 import { Router } from '@angular/router';
 @Component({

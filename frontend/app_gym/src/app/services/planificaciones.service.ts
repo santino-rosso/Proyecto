@@ -10,7 +10,7 @@ export class PlanificacionesService {
     private httpClient: HttpClient
   ) { }
 
-  getPlanificaciones(page: number) {
+  getPlanificacionesAlumno(page: number) {
     let auth_token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
@@ -29,6 +29,7 @@ export class PlanificacionesService {
     });
     return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&%${id_profesor}&`, { headers: headers });
   }
+
   getplanificacionalumno(page: number, id_alumno: number) {
     let auth_token = localStorage.getItem('token');
 
@@ -39,4 +40,14 @@ export class PlanificacionesService {
     return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&id_alumno=${id_alumno}&`, { headers: headers });
   }
 
+  getprofesor(id_profesor: number){
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    
+    return this.httpClient.get(`${this.url}/usuario/${id_profesor}`, { headers: headers });
+
+  }
 }

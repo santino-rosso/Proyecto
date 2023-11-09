@@ -25,7 +25,7 @@ from main.auth.decorators import role_required
 
 
 class Usuario(Resource):
-    @jwt_required(optional=True)
+    @jwt_required()
     def get(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         return usuario.to_json()

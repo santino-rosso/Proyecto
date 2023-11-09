@@ -30,8 +30,10 @@ import { FrasesComponent } from './components/frases/frases.component';
 import { VerUsuariosComponent } from './components/ver-usuarios/ver-usuarios.component';
 import { VerPlanificacionComponent } from './components/ver-planificacion/ver-planificacion.component';
 import { HttpClientModule } from '@angular/common/http'
+import { VerCronogramaComponent } from './components/ver-cronograma/ver-cronograma.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -64,6 +66,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VerUsuariosComponent,
     FrasesComponent,
     VerPlanificacionComponent,
+    VerCronogramaComponent,
   ],
   imports: [
     BrowserModule,
