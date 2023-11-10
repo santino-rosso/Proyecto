@@ -20,7 +20,7 @@
                                 <tr *ngFor="let cronograma of arrayCronogramas">
                                     <td>{{cronograma.id}}</td>
                                     <td>{{cronograma.fecha}}</td>
-                                    <td>{{nombreProfe}}</td>
+                                    <td>{{cronograma.profesor.usuario.nombre}}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -51,9 +51,55 @@
     </div>
     <div class="container-fluid">
       <div class="d-flex justify-content-center align-items-center">
-        <a routerLink="/alumno_perfil_modif"><button class="btn btn-outline-success mx-2 ">Editar</button></a>
+        <button class="btn btn-primary mb-5" (click)="usuarioEditar(usuario)" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Editar Perfil<i class="fa-solid fa-pen-to-square"></i></button>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
         <a class="btn btn-outline-primary" routerLink="/home"  (click)="cerrarSesion()">Cerrar sesión</a>
       </div>
 
+
+      <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Formulario para editar un usuario -->
+                  <form>
+                      <div class="mb-3">
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuarioaEdi.nombre">
+                      </div>
+                      <div class="mb-3">
+                          <label for="apellido" class="form-label">Apellido</label>
+                          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuarioaEdi.apellido">
+                      </div>
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuarioaEdi.email">
+                      </div>
+                      
+                      <div class="mb-3">
+                          <label for="telefono" class="form-label">Teléfono</label>
+                          <input type="number" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuarioaEdi.telefono">
+                      </div>
+    
+                    <div class="mb-3">
+                      <label for="contraseña" class="form-label">Contraseña</label>
+                      <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">
+                  </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary btn-success" (click)="editarUsuario()" data-bs-dismiss="modal">Guardar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
 
       <app-footer></app-footer>

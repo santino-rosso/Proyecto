@@ -74,7 +74,7 @@ class PlanificacionesProfesores(Resource):
 
         planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
-        return jsonify({'planificacion': [planificacion.to_json() for planificacion in planificaciones],
+        return jsonify({'planificacion': [planificacion.to_json_complete() for planificacion in planificaciones],
                   'total': planificaciones.total,
                   'pages': planificaciones.pages,
                   'page': page

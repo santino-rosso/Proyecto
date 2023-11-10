@@ -50,4 +50,15 @@ export class PlanificacionesService {
     return this.httpClient.get(`${this.url}/usuario/${id_profesor}`, { headers: headers });
 
   }
+
+  // postplanificaciones(planificaciondata: any){
+  //   let auth_token = localStorage.getItem('token');
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${auth_token}`
+  //   });
+    
+  //   return this.httpClient.post(`${this.url}/planificaciones_profesores`, planificaciondata)
+
+  // }
 }
