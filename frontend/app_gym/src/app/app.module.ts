@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { VerCronogramaComponent } from './components/ver-cronograma/ver-cronograma.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearPlanificacionComponent } from './components/crear-planificacion/crear-planificacion.component';
 
 
 
@@ -67,6 +68,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FrasesComponent,
     VerPlanificacionComponent,
     VerCronogramaComponent,
+    CrearPlanificacionComponent,
   ],
   imports: [
     BrowserModule,
