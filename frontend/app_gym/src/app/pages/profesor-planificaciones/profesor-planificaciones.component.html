@@ -13,7 +13,7 @@
                                     aria-label="Search">
                             </div>
                             <button class="btn btn-primary mx-2">Buscar</button>
-                            <button class="btn btn-primary mx-2">Crear Planificacion</button>
+                            <button routerLink="/profesor_planificacion_particular_editar" class="btn btn-primary mx-2">Crear Planificacion</button>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                                     <td>{{planificacion.alumno.usuario.nombre}}</td>
                                     <td>{{planificacion.alumno.usuario.apellido}}</td>
                                     <td>{{planificacion.fecha}}</td>
-                                    <td><a routerLink="/profesor_planificacion_particular">Ver planificacion</a></td>
+                                    <td><a routerLink="/profesor_planificacion_particular" (click)="guardarInfoPlan(planificacion.id,planificacion.alumno.usuario.id)">Ver planificacion</a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PlanificacionesService } from 'src/app/services/planificaciones.service';
 
 @Component({
   selector: 'app-crear-planificacion',
@@ -8,33 +10,41 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./crear-planificacion.component.css']
 })
 export class CrearPlanificacionComponent {
+  registerForm!: FormGroup;
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
-  usuarioaEdi: any = {
-      "rol": "",
-      "nombre": "",
-      "apellido": "",
-      "contraseña": "",
-      "telefono": null,
-      "email": ""
+  planificacion: any = {
+      "fecha": "",
+      "tipo": "",
+      "lunes": "",
+      "martes": "",
+      "miercoles": null,
+      "jueves": "",
+      "viernes":"",
+      "sabado": "",
+      "id_profesor":"",
+      "id_alumno":""
+      
   };
+  idalumno: any;
 
   
   constructor(
     private usuariosService: UsuariosService,
-    private router: Router
+    private planificacionesService: PlanificacionesService,
+    private formBuilder: FormBuilder,
   ){}
-
-  rol = localStorage.getItem('rol');
   
   ngOnInit() {
-    this.usuariosService.getUsers(this.currentPage).subscribe((data:any) =>{
+    this.usuariosService.getUsersByRol(this.currentPage, 'Alumno').subscribe((data: any) => {
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
     })
   }
+ 
+
 
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
@@ -50,52 +60,29 @@ export class CrearPlanificacionComponent {
     }
   }
 
-  usuarioEditar(usuario:any){
-    this.usuarioaEdi = usuario;
-  }
+  planificacionaCrear(alumniID:any){
+      this.idalumno = alumniID;
+    }
 
-  editarUsuario() {
-    console.log(this.usuarioaEdi)
-    const usuarioEditado = {
-      nombre: this.usuarioaEdi.nombre, 
-      apellido: this.usuarioaEdi.apellido,
-      contraseña: this.usuarioaEdi.contraseña,
-      rol: this.usuarioaEdi.rol,
-      dni: this.usuarioaEdi.dni,
-      email: this.usuarioaEdi.email
+  crearPlanificacion(){
+    const planificacionCrear = {
+      fecha: this.planificacion.fecha, 
+      tipo: this.planificacion.tipo,
+      lunes: this.planificacion.lunes,
+      martes: this.planificacion.martes,
+      miercoles: this.planificacion.miercoles,
+      jueves: this.planificacion.jueves,
+      viernes: this.planificacion.viernes,
+      sabado: this.planificacion.sabado,
+      id_profesor: localStorage.getItem('id'),
+      id_alumno: this.idalumno
     };
-    this.usuariosService.putUsuario(this.usuarioaEdi.id, usuarioEditado).subscribe((data:any) => {
-      console.log('Usuario editado', data);
+    this.planificacionesService.postplanificaciones(planificacionCrear).subscribe((data:any) => {
+      console.log('Planificacion crear', data);
       this.ngOnInit();
     
     })
   }
-
-  eliminarUsuario(id:number){
-    this.usuariosService.deleteUsuario(id).subscribe((data:any) => {
-      console.log('Usuario eliminado', data);
-      this.ngOnInit();
-    })
-  }
-
-  
-  filtrarPorRol(rol: string) {
-    if (rol === 'Todos') {
-      // Si se selecciona 'Todos', cargar todos los usuarios
-      this.ngOnInit();
-    } else {
-      // Filtrar por el rol seleccionado
-      this.usuariosService.getUsersByRol(this.currentPage, rol).subscribe((data: any) => {
-        console.log('JSON data:', data);
-        this.arrayUsuarios = data.usuario;
-        this.totalPages = data.pages;
-      });
-    }
-  }
-
-  Reiniciar() {
-    this.currentPage = 1;
-    this.ngOnInit();
-  }
-
 }
+
+

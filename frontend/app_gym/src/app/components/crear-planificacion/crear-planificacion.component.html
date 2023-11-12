@@ -3,7 +3,6 @@
         <div class="col-md-8 offset-md-2" style="padding-bottom: 5rem;">
             <h2 class="text-center mb-4">Lista de Usuarios</h2>
             <div class="mb-3">
-            <button class="btn btn-primary btn-sm me-2" (click)="Reiniciar()">Reiniciar<i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <!-- <div class="d-flex mb-3">
                 <input type="text" class="form-control me-2 flex-grow-1" placeholder="Buscar usuario...">
@@ -34,7 +33,7 @@
                         <td>{{usuario.apellido}}</td>
                         <td>{{usuario.rol}}</td>
                         <!-- <a type="button" *ngIf="selectedRole === 'admin'" (click)="saveDni(user)" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal"><i class="fa-solid fa-pen-to-square text-white"></i></a> -->
-                        <td><button class="btn btn-primary btn-sm me-2" (click)="usuarioEditar(usuario)" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Crear<i class="fa-solid fa-pen-to-square"></i></button></td>
+                        <td><button class="btn btn-primary btn-sm me-2" (click)="planificacionaCrear(usuario.id)" data-bs-toggle="modal" data-bs-target="#CrearPlanificacionModal">Crear<i class="fa-solid fa-pen-to-square"></i></button></td>
                         
                     </tr>
                 </tbody>
@@ -89,47 +88,59 @@
         </div>
     </div>
   </div> -->
-  <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+  <div class="modal fade" id="CrearPlanificacionModal" tabindex="-1" aria-labelledby="CrearPlanificacionModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                <h5 class="modal-title" id="CrearPlanificacion">Crear planificacion</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Formulario para editar un usuario -->
                 <form>
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuarioaEdi.nombre">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="datetime" class="form-control" id="fecha" name="fecha">
                     </div>
                     <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuarioaEdi.apellido">
+                        <label for="tipo" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" >
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuarioaEdi.email">
+                        <label for="lunes" class="form-label">Lunes</label>
+                        <input type="text" class="form-control" id="lunes" name="lunes" >
                     </div>
                     
                     <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="number" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuarioaEdi.telefono">
+                        <label for="martes" class="form-label">martes</label>
+                        <input type="text" class="form-control" id="martes" name="martes">
                     </div>
                     <div class="mb-3">
-                      <label for="rol" class="form-label">Rol</label>
-                      <input type="text" class="form-control" id="rol" name="rol" [(ngModel)]="usuarioaEdi.rol">
+                      <label for="miercoles" class="form-label">Miercoles</label>
+                      <input type="text" class="form-control" id="miercoles" name="miercoles" >
                   </div>
                   <div class="mb-3">
-                    <label for="contraseña" class="form-label">Contraseña</label>
-                    <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">
+                    <label for="jueves" class="form-label">Jueves</label>
+                    <input type="text" class="form-control" id="jueves" name="jueves" >
+                </div>
+                <div class="mb-3">
+                    <label for="jueves" class="form-label">Jueves</label>
+                    <input type="text" class="form-control" id="jueves" name="jueves" >
+                </div>
+                <div class="mb-3">
+                    <label for="viernes" class="form-label">Viernes</label>
+                    <input type="text" class="form-control" id="viernes" name="viernes" >
+                </div>
+                <div class="mb-3">
+                    <label for="sabado" class="form-label">Sabado</label>
+                    <input type="text" class="form-control" id="sabado" name="sabado" >
                 </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary btn-success" (click)="editarUsuario()" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-primary btn-success" (click)="crearPlanificacion()" data-bs-dismiss="modal">Guardar</button>
             </div>
         </div>
     </div>

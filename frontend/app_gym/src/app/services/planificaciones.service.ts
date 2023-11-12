@@ -30,7 +30,7 @@ export class PlanificacionesService {
     return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&%${id_profesor}&`, { headers: headers });
   }
 
-  getplanificacionalumno(page: number, id_alumno: number) {
+  getplanificacionesalumno(page: number, id_alumno: number) {
     let auth_token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
@@ -40,25 +40,33 @@ export class PlanificacionesService {
     return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&id_alumno=${id_alumno}&`, { headers: headers });
   }
 
-  getprofesor(id_profesor: number){
+  getplanificacionalumno(id_planificacion: number) {
+    let auth_token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.httpClient.get(`${this.url}/planificacion_profesor/${id_planificacion}`, { headers: headers });
+  }
+
+  putplanificacion(id_planificacion: number, planificaciondata: any) {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.httpClient.put(`${this.url}/planificacion_profesor/${id_planificacion}`, planificaciondata, { headers: headers });
+  }
+
+  postplanificaciones(planificaciondata: any){
     let auth_token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
     
-    return this.httpClient.get(`${this.url}/usuario/${id_profesor}`, { headers: headers });
+    return this.httpClient.post(`${this.url}/planificaciones_profesores`, planificaciondata)
 
   }
-
-  // postplanificaciones(planificaciondata: any){
-  //   let auth_token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${auth_token}`
-  //   });
-    
-  //   return this.httpClient.post(`${this.url}/planificaciones_profesores`, planificaciondata)
-
-  // }
 }

@@ -5,41 +5,7 @@
             <div class="container mt-3">
                 <div class="row justify-content-center">
                     <div class="col-11">
-                        <h2 class="text-center mt-2 mb-3">Planificación: Tiago Licciardi</h2>
-                    </div>
-                    <div class="container col-11">
-                        <ul class="nav nav justify-content-center align-items-center">
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Lunes</h5></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Martes</h5></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Miércoles</h5></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Jueves</h5></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Viernes</h5></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="#"><h5>Sábado</h5></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="container col-11">
-                        <ul class="nav nav justify-content-center align-items-center">
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="/profesor_planificaciones"><button
-                                        class="btn btn-primary">Volver</button></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="/profesor_planificacion_particular_editar"><button
-                                        class="btn btn-primary">Editar</button></a>
-                            </li>
-                        </ul>
+                        <h2 class="text-center mt-2 mb-3">Planificación: {{alumno.nombre}} {{alumno.apellido}}</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-3">
@@ -47,59 +13,32 @@
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col">Ejercicio</th>
-                                    <th scope="col">Series</th>
-                                    <th scope="col">Repeticiones</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Lunes</th>
+                                    <th scope="col">Martes</th>
+                                    <th scope="col">Miercoles</th>
+                                    <th scope="col">Jueves</th>
+                                    <th scope="col">Viernes</th>
+                                    <th scope="col">Sabado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Press de banca c/barra banco plano</td>
-                                    <td>4</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>Press de banca c/barra banco inclinado</td>
-                                    <td>4</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>Cruce de poleas para pecho</td>
-                                    <td>3</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>Fondo de tríceps</td>
-                                    <td>3</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>Tríceps francés</td>
-                                    <td>4</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexiones de brazo diamante</td>
-                                    <td>3</td>
-                                    <td>Al fallo</td>
-                                </tr>
-                                <tr>
-                                    <td>Fondo de tríceps</td>
-                                    <td>3</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>Tríceps francés</td>
-                                    <td>4</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexiones de brazo diamante</td>
-                                    <td>3</td>
-                                    <td>Al fallo</td>
+                                    <td>{{planificacion.tipo}}</td>
+                                    <td>{{planificacion.lunes}}</td>
+                                    <td>{{planificacion.martes}}</td>
+                                    <td>{{planificacion.miercoles}}</td>
+                                    <td>{{planificacion.jueves}}</td>
+                                    <td>{{planificacion.viernes}}</td>
+                                    <td>{{planificacion.sabado}}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-11">
+                        <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editarPlanificacionModal">Editar<i class="fa-solid fa-pen-to-square"></i></button>
                     </div>
                 </div>
             </div>
@@ -111,5 +50,57 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="editarPlanificacionModal" tabindex="-1" aria-labelledby="editarPlanificacionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarPlanificacionModalLabel">Editar Planificación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para editar una planificaion -->
+                <form>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="planificacion.fecha">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="planificacion.tipo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lunes" class="form-label">Lunes</label>
+                        <input type="text" class="form-control" id="lunes" name="lunes" [(ngModel)]="planificacion.lunes">
+                    </div>
+                    <div class="mb-3">
+                        <label for="martes" class="form-label">Martes</label>
+                        <input type="text" class="form-control" id="martes" name="martes" [(ngModel)]="planificacion.martes">
+                    </div>
+                    <div class="mb-3">
+                      <label for="miercoles" class="form-label">Miercoles</label>
+                      <input type="text" class="form-control" id="miercoles" name="miercoles" [(ngModel)]="planificacion.miercoles">
+                  </div>
+                  <div class="mb-3">
+                    <label for="jueves" class="form-label">Jueves</label>
+                    <input type="text" class="form-control" id="jueves" name="jueves" [(ngModel)]="planificacion.jueves">
+                  </div>
+                  <div class="mb-3">
+                    <label for="viernes" class="form-label">Viernes</label>
+                    <input type="text" class="form-control" id="viernes" name="viernes" [(ngModel)]="planificacion.viernes">
+                  </div><div class="mb-3">
+                    <label for="sabado" class="form-label">Sabado</label>
+                    <input type="text" class="form-control" id="sabado" name="sabado" [(ngModel)]="planificacion.sabado">
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btn-success" (click)="editarPlanificacion()" data-bs-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <app-frases></app-frases>
 <app-footer></app-footer>

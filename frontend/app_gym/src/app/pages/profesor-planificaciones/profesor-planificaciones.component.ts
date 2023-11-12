@@ -24,4 +24,9 @@ export class ProfesorPlanificacionesComponent {
       })
   }
 
+  guardarInfoPlan(planificacionid:any, alumnoid: any){
+    localStorage.setItem('idPlanificacion', planificacionid);
+    localStorage.setItem('idAlumno', alumnoid);
+  }
+
 }

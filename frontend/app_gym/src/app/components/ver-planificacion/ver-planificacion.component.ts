@@ -18,7 +18,7 @@ export class VerPlanificacionComponent {
   ){}
 
   ngOnInit() {
-    this.planificacionesService.getplanificacionalumno(this.currentPage, this.idUsuario).subscribe((data:any) =>{
+    this.planificacionesService.getplanificacionesalumno(this.currentPage, this.idUsuario).subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayPlanificaciones = data.planificacion;
       this.totalPages = data.pages;
