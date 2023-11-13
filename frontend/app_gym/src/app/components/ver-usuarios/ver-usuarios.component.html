@@ -94,6 +94,11 @@
                       <label for="rol" class="form-label">Rol</label>
                       <input type="text" class="form-control" id="rol" name="rol" [(ngModel)]="usuarioaEdi.rol">
                   </div>
+                  <!-- Mostrar el campo "especialidad" solo si el rol es "Profesor" -->
+                  <div *ngIf="usuarioaEdi.rol === 'Profesor'" class="mb-3">
+                    <label for="especialidad" class="form-label">Especialidad</label>
+                    <input type="text" class="form-control" id="especialidad" name="especialidad" [(ngModel)]="usuarioaEdi.especialidad">
+                  </div>
                   <div class="mb-3">
                     <label for="contraseña" class="form-label">Contraseña</label>
                     <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">

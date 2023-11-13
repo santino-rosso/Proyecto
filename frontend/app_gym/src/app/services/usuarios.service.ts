@@ -58,5 +58,52 @@ export class UsuariosService {
     return this.httpClient.get(this.url + '/usuario/' + id, { headers: headers });  
   }
 
+  crearusuarioalumno(data:any){
+  let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    
+    return this.httpClient.post(`${this.url}/usuarios_alumnos`, data, { headers: headers });
+  }
 
+  crearusuariprofesor(data:any){
+    let auth_token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+      
+      return this.httpClient.post(`${this.url}/usuarios_profesores`, data, { headers: headers });
+    }
+  
+    postEspecialidad(especialidad: any){
+      let auth_token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+      return this.httpClient.post(`${this.url}/usuarios_profesores`, especialidad, { headers: headers })
+    }
+
+    putEspecialidad(especialidad: any, id: any){
+      let auth_token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+      return this.httpClient.put(`${this.url}/usuario_profesor/${id}`, especialidad, { headers: headers })
+    }
+
+    postSocio(socio: any){
+      let auth_token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${auth_token}`
+      });
+      return this.httpClient.post(`${this.url}/usuarios_alumnos`, socio, { headers: headers })
+    }
+
+    
 }

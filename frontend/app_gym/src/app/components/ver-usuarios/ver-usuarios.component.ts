@@ -11,6 +11,8 @@ export class VerUsuariosComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  contadorEspecialidad: number = 1;
+
   usuarioaEdi: any = {
       "rol": "",
       "nombre": "",
@@ -23,7 +25,7 @@ export class VerUsuariosComponent {
   
   constructor(
     private usuariosService: UsuariosService,
-    private router: Router
+    private router: Router,
   ){}
 
   rol = localStorage.getItem('rol');
@@ -64,12 +66,30 @@ export class VerUsuariosComponent {
       dni: this.usuarioaEdi.dni,
       email: this.usuarioaEdi.email
     };
+    const especialidad = {
+      especialidad: this.usuarioaEdi.especialidad,
+      id_usuario: this.usuarioaEdi.id
+    }
+    const socio = {
+      nro_socio: this.contadorEspecialidad,
+      id_usuario: this.usuarioaEdi.id
+    }
+    this.contadorEspecialidad++;
     this.usuariosService.putUsuario(this.usuarioaEdi.id, usuarioEditado).subscribe((data:any) => {
       console.log('Usuario editado', data);
+      if (this.usuarioaEdi.rol === 'Profesor')
+        if (this.usuarioaEdi.especialidad === "")
+          this.usuariosService.postEspecialidad(especialidad).subscribe((data:any) => {
+        })
+        else
+          this.usuariosService.putEspecialidad(especialidad, this.usuarioaEdi.id).subscribe((data:any) => {
+          })
+      if (this.usuarioaEdi.rol === 'Alumno')
+         this.usuariosService.postSocio(socio).subscribe((data:any) => {
+        })
       this.ngOnInit();
-    
-    })
-  }
+      
+  })}
 
   eliminarUsuario(id:number){
     this.usuariosService.deleteUsuario(id).subscribe((data:any) => {
