@@ -101,40 +101,36 @@
                 <form>
                     <div class="mb-3">
                         <label for="fecha" class="form-label">Fecha</label>
-                        <input type="datetime" class="form-control" id="fecha" name="fecha">
+                        <input type="datetime" class="form-control" id="fecha" name="fecha" [(ngModel)]="planificacion.fecha">
                     </div>
                     <div class="mb-3">
                         <label for="tipo" class="form-label">Tipo</label>
-                        <input type="text" class="form-control" id="tipo" name="tipo" >
+                        <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="planificacion.tipo">
                     </div>
                     <div class="mb-3">
                         <label for="lunes" class="form-label">Lunes</label>
-                        <input type="text" class="form-control" id="lunes" name="lunes" >
+                        <input type="text" class="form-control" id="lunes" name="lunes" [(ngModel)]="planificacion.lunes" >
                     </div>
                     
                     <div class="mb-3">
                         <label for="martes" class="form-label">martes</label>
-                        <input type="text" class="form-control" id="martes" name="martes">
+                        <input type="text" class="form-control" id="martes" name="martes" [(ngModel)]="planificacion.martes">
                     </div>
                     <div class="mb-3">
                       <label for="miercoles" class="form-label">Miercoles</label>
-                      <input type="text" class="form-control" id="miercoles" name="miercoles" >
+                      <input type="text" class="form-control" id="miercoles" name="miercoles"[(ngModel)]="planificacion.miercoles" >
                   </div>
                   <div class="mb-3">
                     <label for="jueves" class="form-label">Jueves</label>
-                    <input type="text" class="form-control" id="jueves" name="jueves" >
-                </div>
-                <div class="mb-3">
-                    <label for="jueves" class="form-label">Jueves</label>
-                    <input type="text" class="form-control" id="jueves" name="jueves" >
+                    <input type="text" class="form-control" id="jueves" name="jueves" [(ngModel)]="planificacion.jueves" >
                 </div>
                 <div class="mb-3">
                     <label for="viernes" class="form-label">Viernes</label>
-                    <input type="text" class="form-control" id="viernes" name="viernes" >
+                    <input type="text" class="form-control" id="viernes" name="viernes" [(ngModel)]="planificacion.viernes">
                 </div>
                 <div class="mb-3">
                     <label for="sabado" class="form-label">Sabado</label>
-                    <input type="text" class="form-control" id="sabado" name="sabado" >
+                    <input type="text" class="form-control" id="sabado" name="sabado" [(ngModel)]="planificacion.sabado">
                 </div>
                 </form>
             </div>

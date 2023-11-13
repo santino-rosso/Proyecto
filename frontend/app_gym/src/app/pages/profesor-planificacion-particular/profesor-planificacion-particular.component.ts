@@ -14,7 +14,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class ProfesorPlanificacionParticularComponent {
   planificacion: any;
   alumno: any;
-  id_planificaion: number = Number(localStorage.getItem('id_planificacion'));
+  id_planificaion: number = Number(localStorage.getItem('idPlanificacion'));
   id_alumno: number = Number(localStorage.getItem('idAlumno'))
   fecha_objeto: any;
 
@@ -41,7 +41,6 @@ export class ProfesorPlanificacionParticularComponent {
 
   editarPlanificacion(){
     const planificacionEditada = {
-      fecha: this.planificacion.fecha, 
       tipo: this.planificacion.tipo,
       lunes: this.planificacion.lunes,
       martes: this.planificacion.martes,

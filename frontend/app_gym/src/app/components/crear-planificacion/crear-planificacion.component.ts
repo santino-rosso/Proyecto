@@ -19,12 +19,12 @@ export class CrearPlanificacionComponent {
       "tipo": "",
       "lunes": "",
       "martes": "",
-      "miercoles": null,
+      "miercoles": "",
       "jueves": "",
       "viernes":"",
       "sabado": "",
-      "id_profesor":"",
-      "id_alumno":""
+      "id_profesor": null,
+      "id_alumno":null
       
   };
   idalumno: any;
@@ -78,9 +78,7 @@ export class CrearPlanificacionComponent {
       id_alumno: this.idalumno
     };
     this.planificacionesService.postplanificaciones(planificacionCrear).subscribe((data:any) => {
-      console.log('Planificacion crear', data);
-      this.ngOnInit();
-    
+      console.log('Planificacion creada', data);
     })
   }
 }

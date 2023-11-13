@@ -27,6 +27,13 @@ export class ProfesorPlanificacionesComponent {
   guardarInfoPlan(planificacionid:any, alumnoid: any){
     localStorage.setItem('idPlanificacion', planificacionid);
     localStorage.setItem('idAlumno', alumnoid);
+
   }
 
+  eliminarPlanificacion(id:number){
+    this.planificacionesService.deleteplanificaciones(id).subscribe((data:any) => {
+      console.log('Usuario eliminado', data);
+      this.ngOnInit();
+    })
+  }
 }

@@ -8,11 +8,6 @@
                     <div class="col-11">
                         <h2 class="text-center mt-2 mb-3">Planificaciones</h2>
                         <div class="d-flex justify-content-center mb-3">
-                            <div class="md-form mt-0">
-                                <input class="form-control" type="text" placeholder="Buscar alumno"
-                                    aria-label="Search">
-                            </div>
-                            <button class="btn btn-primary mx-2">Buscar</button>
                             <button routerLink="/profesor_planificacion_particular_editar" class="btn btn-primary mx-2">Crear Planificacion</button>
                         </div>
                     </div>
@@ -26,6 +21,8 @@
                                     <th scope="col">Apellido</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Planificación</th>
+                                    <th scope="col">Eliminar</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +31,7 @@
                                     <td>{{planificacion.alumno.usuario.apellido}}</td>
                                     <td>{{planificacion.fecha}}</td>
                                     <td><a routerLink="/profesor_planificacion_particular" (click)="guardarInfoPlan(planificacion.id,planificacion.alumno.usuario.id)">Ver planificacion</a></td>
+                                    <td><button class="btn btn-primary btn-sm me-2" (click)="eliminarPlanificacion(planificacion.id)" >Eliminar<i class="fa-solid fa-pen-to-square"></i></button></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -27,7 +27,7 @@ export class PlanificacionesService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     });
-    return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&%${id_profesor}&`, { headers: headers });
+    return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&id_profesor=${id_profesor}&`, { headers: headers });
   }
 
   getplanificacionesalumno(page: number, id_alumno: number) {
@@ -66,7 +66,16 @@ export class PlanificacionesService {
       'Authorization': `Bearer ${auth_token}`
     });
     
-    return this.httpClient.post(`${this.url}/planificaciones_profesores`, planificaciondata)
+    return this.httpClient.post(`${this.url}/planificaciones_profesores`, planificaciondata, { headers: headers });
+  }
 
+  deleteplanificaciones(id_planificacion: number){
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.httpClient.delete(`${this.url}/planificacion_profesor/${id_planificacion}`, { headers: headers });
   }
 }
+

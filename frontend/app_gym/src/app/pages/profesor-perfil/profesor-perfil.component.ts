@@ -7,13 +7,5 @@ import {AuthService} from 'src/app/services/auth.service';
   styleUrls: ['./profesor-perfil.component.css']
 })
 export class ProfesorPerfilComponent {
-  constructor(
-    private authService: AuthService
-  ){}
-
-  cerrarSesion(){
-    this.authService.logout();
-  }
-
 }
 
