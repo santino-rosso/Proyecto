@@ -10,6 +10,7 @@ export class VerPlanificacionComponent {
   arrayPlanificaciones:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  itemsPerPage: number = 5;
   idUsuario: number = Number(localStorage.getItem('id'));
   
   constructor(
@@ -18,10 +19,25 @@ export class VerPlanificacionComponent {
   ){}
 
   ngOnInit() {
-    this.planificacionesService.getplanificacionesalumno(this.currentPage, this.idUsuario).subscribe((data:any) =>{
+    this.planificacionesService.getplanificacionesalumno(this.currentPage, this.idUsuario, this.itemsPerPage).subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayPlanificaciones = data.planificacion;
       this.totalPages = data.pages;
     })
   }
+
+  loadNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.ngOnInit();
+    }
+  }
+
+  loadPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--; 
+      this.ngOnInit();
+    }
+  }
+
 }

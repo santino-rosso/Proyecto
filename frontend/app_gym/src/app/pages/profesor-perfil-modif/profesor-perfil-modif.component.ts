@@ -10,24 +10,24 @@ export class ProfesorPerfilModifComponent {
   arrayClases:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  itemsPerPage: number = 5;
 
   claseaEdi: any = {
     "nombre_clase": "",
     "horario_clase": "",
+  };
 
-};
-
-clases: any = {
-  "nombre_clase": "",
-  "horario_clase": "",
-};
+  clases: any = {
+    "nombre_clase": "",
+    "horario_clase": "",
+  };
 
   constructor(
     private clasesService: ClasesService,
   ){}
 
   ngOnInit() {
-    this.clasesService.getclases(this.currentPage).subscribe((data:any) =>{
+    this.clasesService.getclases(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayClases = data.clases;
       this.totalPages = data.pages;
@@ -54,9 +54,18 @@ clases: any = {
     this.ngOnInit();
   }
   
-  claseEditar(claseaEdi: any){
-    this.clasesService.putclase(claseaEdi.id,claseaEdi).subscribe((data:any) =>{
-      console.log('JSON data:', data);
+  claseEditar(clase:any) {
+    this.claseaEdi = clase;
+  }
+
+  editarClase(){
+    console.log(this.claseaEdi)
+    const claseEditado = {
+      nombre_clase: this.claseaEdi.nombre_clase,
+      horario_clase: this.claseaEdi.horario_clase
+    };
+    this.clasesService.putclase(this.claseaEdi.id,claseEditado).subscribe((data:any) =>{
+      console.log('Clase editada:', data);
     })
     this.ngOnInit();
   

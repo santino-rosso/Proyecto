@@ -10,6 +10,7 @@ export class ProfesorPlanificacionesComponent {
   arrayPlanificaciones:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  itemsPerPage: number = 5;
   idProfesor: number = Number(localStorage.getItem('id'));
 
   constructor(
@@ -17,11 +18,25 @@ export class ProfesorPlanificacionesComponent {
   ){}
   
   ngOnInit() {
-    this.planificacionesService.getplanificacionprofesor(this.currentPage, this.idProfesor).subscribe((data:any) =>{
+    this.planificacionesService.getplanificacionprofesor(this.currentPage, this.idProfesor, this.itemsPerPage).subscribe((data:any) =>{
         console.log('JSON data:', data);
         this.arrayPlanificaciones = data.planificacion;
         this.totalPages = data.pages;
       })
+  }
+
+  loadNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.ngOnInit();
+    }
+  }
+
+  loadPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--; 
+      this.ngOnInit();
+    }
   }
 
   guardarInfoPlan(planificacionid:any, alumnoid: any){

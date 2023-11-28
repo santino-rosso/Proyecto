@@ -14,6 +14,7 @@ export class CrearPlanificacionComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  itemsPerPage: number = 5;
   planificacion: any = {
       "fecha": "",
       "tipo": "",
@@ -37,7 +38,7 @@ export class CrearPlanificacionComponent {
   ){}
   
   ngOnInit() {
-    this.usuariosService.getUsersByRol(this.currentPage, 'Alumno').subscribe((data: any) => {
+    this.usuariosService.getUsersByRol(this.currentPage, 'Alumno', this.itemsPerPage).subscribe((data: any) => {
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;

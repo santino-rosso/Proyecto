@@ -5,7 +5,7 @@
             <h2 class="text-center mb-4">Clases</h2>
             <div class="mb-3">
             <button class="btn btn-primary btn-sm me-2" (click)="Reiniciar()">Reiniciar<i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="btn btn-primary btn-sm me-2" (click)="crearClase()" data-bs-toggle="modal" data-bs-target="#CrearClaseModal">Crear Clase<i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#CrearClaseModal">Crear Clase<i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <table class="table table-striped table-bordered text-center">
                 <thead>
@@ -20,7 +20,7 @@
                     <tr *ngFor="let clase of arrayClases">
                         <td>{{clase.nombre_clase}}</td>
                         <td>{{clase.horario_clase}}</td>
-                        <td><button class="btn btn-primary btn-sm me-2" (click)="claseEditar(clase)" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Editar<i class="fa-solid fa-pen-to-square"></i></button></td>
+                        <td><button class="btn btn-primary btn-sm me-2" (click)="claseEditar(clase)" data-bs-toggle="modal" data-bs-target="#EditarClaseModal">Editar<i class="fa-solid fa-pen-to-square"></i></button></td>
                         <td><button class="btn btn-primary btn-sm me-2" (click)="eliminarClase(clase.id)" >Eliminar<i class="fa-solid fa-pen-to-square"></i></button></td>
                     </tr>
                 </tbody>
@@ -54,7 +54,7 @@
               </div>
               <div class="mb-3">
                   <label for="horario_clase" class="form-label">Horario</label>
-                  <input type="datetime" class="form-control" id="horario_clase" name="horario_clase" [(ngModel)]="clases.hora">
+                  <input type="text" class="form-control" placeholder="dd/mm/yyyy, hh:mm:ss" id="horario_clase" name="horario_clase" [(ngModel)]="clases.horario_clase">
               </div>
               </form>
           </div>
@@ -64,5 +64,33 @@
           </div>
       </div>
   </div>
+</div>
+<div class="modal fade" id="EditarClaseModal" tabindex="-1" aria-labelledby="EditarClaseModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="EditarClase">Editar clase</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Formulario para editar clase -->
+            <form>
+                
+            <div class="mb-3">
+                <label for="nombre_clase" class="form-label">Clase</label>
+                <input type="text" class="form-control" id="nombre_clase" name="nombre_clase" [(ngModel)]="claseaEdi.nombre_clase">
+            </div>
+            <div class="mb-3">
+                <label for="horario_clase" class="form-label">Horario</label>
+                <input type="datetime" class="form-control" placeholder="dd/mm/yyyy, hh:mm:ss" id="horario_clase" name="horario_clase" [(ngModel)]="claseaEdi.horario_clase">
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary btn-success" (click)="crearClase()" data-bs-dismiss="modal">Guardar</button>
+        </div>
+    </div>
+</div>
 </div>
 <app-footer></app-footer>

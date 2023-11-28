@@ -11,7 +11,9 @@ export class VerUsuariosComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
+  itemsPerPage: number = 5
   contadorEspecialidad: number = 1;
+  selectedRol: string = 'Todos';
 
   usuarioaEdi: any = {
       "rol": "",
@@ -31,7 +33,7 @@ export class VerUsuariosComponent {
   rol = localStorage.getItem('rol');
   
   ngOnInit() {
-    this.usuariosService.getUsers(this.currentPage).subscribe((data:any) =>{
+    this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
@@ -41,14 +43,14 @@ export class VerUsuariosComponent {
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.ngOnInit();
+      this.filtrarPorRol(this.selectedRol);
     }
   }
 
   loadPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--; 
-      this.ngOnInit();
+      this.filtrarPorRol(this.selectedRol);
     }
   }
 
@@ -100,12 +102,13 @@ export class VerUsuariosComponent {
 
   
   filtrarPorRol(rol: string) {
-    if (rol === 'Todos') {
+    this.selectedRol = rol;
+    if (this.selectedRol === 'Todos') {
       // Si se selecciona 'Todos', cargar todos los usuarios
       this.ngOnInit();
     } else {
       // Filtrar por el rol seleccionado
-      this.usuariosService.getUsersByRol(this.currentPage, rol).subscribe((data: any) => {
+      this.usuariosService.getUsersByRol(this.currentPage, rol, this.itemsPerPage).subscribe((data: any) => {
         console.log('JSON data:', data);
         this.arrayUsuarios = data.usuario;
         this.totalPages = data.pages;
@@ -115,6 +118,7 @@ export class VerUsuariosComponent {
 
   Reiniciar() {
     this.currentPage = 1;
+    this.selectedRol = 'Todos';
     this.ngOnInit();
   }
   

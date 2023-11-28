@@ -60,7 +60,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario para editar un usuario -->
+                <!-- Formulario para crear una planificacion -->
                 <form>
                     <div class="mb-3">
                         <label for="fecha" class="form-label">Fecha</label>
@@ -72,28 +72,28 @@
                     </div>
                     <div class="mb-3">
                         <label for="lunes" class="form-label">Lunes</label>
-                        <input type="text" class="form-control" id="lunes" name="lunes" [(ngModel)]="planificacion.lunes" >
+                        <textarea class="form-control" id="lunes" name="lunes" [(ngModel)]="planificacion.lunes"></textarea>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="martes" class="form-label">martes</label>
-                        <input type="text" class="form-control" id="martes" name="martes" [(ngModel)]="planificacion.martes">
+                        <label for="martes" class="form-label">Martes</label>
+                        <textarea class="form-control" id="martes" name="martes" [(ngModel)]="planificacion.martes"></textarea>
                     </div>
                     <div class="mb-3">
                       <label for="miercoles" class="form-label">Miercoles</label>
-                      <input type="text" class="form-control" id="miercoles" name="miercoles"[(ngModel)]="planificacion.miercoles" >
+                      <textarea class="form-control" id="miercoles" name="miercoles"[(ngModel)]="planificacion.miercoles" ></textarea>
                   </div>
                   <div class="mb-3">
                     <label for="jueves" class="form-label">Jueves</label>
-                    <input type="text" class="form-control" id="jueves" name="jueves" [(ngModel)]="planificacion.jueves" >
+                    <textarea class="form-control" id="jueves" name="jueves" [(ngModel)]="planificacion.jueves" ></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="viernes" class="form-label">Viernes</label>
-                    <input type="text" class="form-control" id="viernes" name="viernes" [(ngModel)]="planificacion.viernes">
+                    <textarea class="form-control" id="viernes" name="viernes" [(ngModel)]="planificacion.viernes"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="sabado" class="form-label">Sabado</label>
-                    <input type="text" class="form-control" id="sabado" name="sabado" [(ngModel)]="planificacion.sabado">
+                    <textarea class="form-control" id="sabado" name="sabado" [(ngModel)]="planificacion.sabado"></textarea>
                 </div>
                 </form>
             </div>

@@ -11,15 +11,16 @@ export class ClasesService {
     private httpClient: HttpClient,
     ) { }
 
-    getclases(page: number) {
+    getclases(page: number,per_page:number) {
       let auth_token = localStorage.getItem('token');
   
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${auth_token}`
       });
-      return this.httpClient.get(`${this.url}/clases?page=${page}`, { headers: headers });
+      return this.httpClient.get(`${this.url}/clases?page=${page}&per_page=${per_page}`, { headers: headers });
     }
+    
     putclase(id: number, claseData: any) {
       let auth_token = localStorage.getItem('token');
       const headers = new HttpHeaders({
