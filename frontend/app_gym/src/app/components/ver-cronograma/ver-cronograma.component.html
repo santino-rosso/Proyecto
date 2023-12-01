@@ -10,17 +10,17 @@
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col">Planificacion</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Profesor</th>
+                                    <th scope="col">Planificacion</th>
                              
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let cronograma of arrayCronogramas">
-                                    <td>{{cronograma.id}}</td>
                                     <td>{{cronograma.fecha}}</td>
                                     <td>{{cronograma.profesor.usuario.nombre}}</td>
+                                    <td><a routerLink="/alumno_planificaciones" (click)="guardarInfoPlan(cronograma.id)">Ver planificacion</a></td>
                                 </tr>
                             </tbody>
                         </table>

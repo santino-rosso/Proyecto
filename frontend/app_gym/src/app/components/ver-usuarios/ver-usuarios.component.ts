@@ -108,7 +108,7 @@ export class VerUsuariosComponent {
       this.ngOnInit();
     } else {
       // Filtrar por el rol seleccionado
-      this.usuariosService.getUsersByRol(this.currentPage, rol, this.itemsPerPage).subscribe((data: any) => {
+      this.usuariosService.getUsersByRol(this.currentPage, this.selectedRol, this.itemsPerPage).subscribe((data: any) => {
         console.log('JSON data:', data);
         this.arrayUsuarios = data.usuario;
         this.totalPages = data.pages;

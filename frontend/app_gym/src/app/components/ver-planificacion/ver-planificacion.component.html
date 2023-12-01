@@ -20,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let planificacion of arrayPlanificaciones">
+                                <tr>
                                     <td>{{planificacion.tipo}}</td>
                                     <td>{{planificacion.lunes}}</td>
                                     <td>{{planificacion.martes}}</td>
@@ -40,14 +40,6 @@
                 <img src="assets/imagenes/1" alt="Una imagen de ejemplo"
                     class="img-fluid img-size align-self-end border border-primary border-2"
                     style="max-height:  20rem; margin-top: 7rem;" />
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-              <div class="col-md-4 offset-md-2 text-center">
-                <button (click)="loadPreviousPage()" class="btn btn-primary me-2" [disabled]="currentPage === 1" style="margin-top: -70px;">Página anterior</button>
-                <button (click)="loadNextPage()" class="btn btn-primary" [disabled]="currentPage === totalPages" style="margin-top: -70px;">Página siguiente</button>
-              </div>
             </div>
         </div>
     </div>

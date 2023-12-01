@@ -45,4 +45,9 @@ export class VerCronogramaComponent {
     }
   }
 
+  guardarInfoPlan(planificacionid:any){
+    localStorage.setItem('idPlanificacion', planificacionid);
+  }
+
+
 }
