@@ -53,7 +53,7 @@ export class EditarPerfilComponent {
     const usuarioEditado = {
       nombre: this.usuarioaEdi.nombre, 
       apellido: this.usuarioaEdi.apellido,
-      contraseña: this.usuarioaEdi.contraseña,
+      contraseña: this.usuarioaEdi.contrasena,
       rol: this.usuarioaEdi.rol,
       dni: this.usuarioaEdi.dni,
       email: this.usuarioaEdi.email

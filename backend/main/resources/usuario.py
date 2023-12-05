@@ -39,11 +39,25 @@ class Usuario(Resource):
         return '', 204
     
     
+    # def put(self, id):
+    #     usuario = db.session.query(UsuariosModel).get_or_404(id)
+    #     data = request.get_json().items()
+    #     for key, value in data:
+    #         setattr(usuario, key, value)
+    #     db.session.add(usuario)
+    #     db.session.commit()
+    #     return usuario.to_json(), 201
+
     def put(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         data = request.get_json().items()
+
         for key, value in data:
-            setattr(usuario, key, value)
+            if key == 'contraseña':
+                # Utiliza el setter plain_contraseña para establecer y hashear la nueva contraseña
+                usuario.plain_contraseña = value
+            else:
+                setattr(usuario, key, value)
         db.session.add(usuario)
         db.session.commit()
         return usuario.to_json(), 201

@@ -41,6 +41,7 @@ export class ProfesorPlanificacionParticularComponent {
 
   editarPlanificacion(){
     const planificacionEditada = {
+      fecha: this.planificacion.fecha,
       tipo: this.planificacion.tipo,
       lunes: this.planificacion.lunes,
       martes: this.planificacion.martes,

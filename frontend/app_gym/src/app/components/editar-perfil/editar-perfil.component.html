@@ -38,7 +38,6 @@
                   <td class="text-center">Dni</td>
                   <td class="text-center">{{usuario.dni}}</td>
                 </tr>
-               
               </tbody>
             </table>
           </div>
@@ -83,6 +82,11 @@
                     <div class="mb-3">
                       <label for="dni" class="form-label">Dni</label>
                       <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="usuarioaEdi.dni">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="contraseña" class="form-label">Contraseña</label>
+                      <input type="text" class="form-control" id="contraseña" name="contraseña" [(ngModel)]="usuarioaEdi.contrasena">
                     </div>
                   </form>
               </div>

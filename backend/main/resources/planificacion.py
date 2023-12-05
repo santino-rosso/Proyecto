@@ -4,6 +4,8 @@ from .. import db
 from main.models import PlanificacionesModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
+from datetime import datetime
+
 
 
 #Datos de prueba en JSON
@@ -42,6 +44,9 @@ class PlanificacionProfesor(Resource):
         planificacion = db.session.query(PlanificacionesModel).get_or_404(id)
         data = request.get_json().items()
         for key, value in data:
+            # Verificar si el campo es 'fecha' y convertir la cadena a datetime
+            if key == 'fecha':
+                value = datetime.strptime(value, '%d-%m-%Y')
             setattr(planificacion, key, value)
         db.session.add(planificacion)
         db.session.commit()
