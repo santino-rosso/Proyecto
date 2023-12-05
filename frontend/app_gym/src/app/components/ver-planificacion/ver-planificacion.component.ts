@@ -8,8 +8,17 @@ import { PlanificacionesService } from 'src/app/services/planificaciones.service
 })
 
 export class VerPlanificacionComponent {
-  planificacion:any;
-  idPlanificacion: number = Number(localStorage.getItem('idPlanificacion'))
+  idPlanificacion: number = Number(localStorage.getItem('idPlanificacion'));
+  planificacion:any = {
+    "tipo": "",
+    "lunes": "",
+    "martes": "",
+    "miercoles": "",
+    "jueves": "",
+    "viernes": "",
+    "sabado": ""
+  };
+
   
   constructor(
     private planificacionesService: PlanificacionesService,

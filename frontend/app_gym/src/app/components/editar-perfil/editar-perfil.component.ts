@@ -10,7 +10,15 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class EditarPerfilComponent {
 
   idUsuario = Number(localStorage.getItem("id"))
-  usuario:any;
+  usuario:any = {
+    "rol": "",
+    "nombre": "",
+    "apellido": "",
+    "contraseña": "",
+    "telefono": null,
+    "email": ""
+  };
+  
   usuarioaEdi: any = {
     "rol": "",
     "nombre": "",

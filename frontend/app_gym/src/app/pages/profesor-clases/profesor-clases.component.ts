@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ClasesService } from 'src/app/services/clases.service';
 
 @Component({
-  selector: 'app-profesor-perfil-modif',
-  templateUrl: './profesor-perfil-modif.component.html',
-  styleUrls: ['./profesor-perfil-modif.component.css']
+  selector: 'app-profesor-clases',
+  templateUrl: './profesor-clases.component.html',
+  styleUrls: ['./profesor-clases.component.css']
 })
-export class ProfesorPerfilModifComponent {
+export class ProfesorClasesComponent {
   arrayClases:any;
   currentPage: number = 1;
   totalPages: number = 1;

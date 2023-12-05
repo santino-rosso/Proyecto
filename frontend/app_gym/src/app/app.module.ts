@@ -6,23 +6,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AdminAlumnoComponent } from './pages/admin-alumno/admin-alumno.component';
-import { AdminEditarAlumnoComponent } from './pages/admin-editar-alumno/admin-editar-alumno.component';
-import { AdminEditarProfesorComponent } from './pages/admin-editar-profesor/admin-editar-profesor.component';
-import { AdminProfesorComponent } from './pages/admin-profesor/admin-profesor.component';
+import { AdminPermisosComponent } from './pages/admin-permisos/admin-permisos.component';
 import { AlumnoCronogramaComponent } from './pages/alumno-cronograma/alumno-cronograma.component';
 import { AlumnoPerfilComponent } from './pages/alumno-perfil/alumno-perfil.component';
-import { AlumnoPerfilModifComponent } from './pages/alumno-perfil-modif/alumno-perfil-modif.component';
+import { AlumnoClasesComponent } from './pages/alumno-clases/alumno-clases.component';
 import { AlumnoPlanificacionesComponent } from './pages/alumno-planificaciones/alumno-planificaciones.component';
 import { ProfesorPerfilComponent } from './pages/profesor-perfil/profesor-perfil.component';
-import { ProfesorPerfilModifComponent } from './pages/profesor-perfil-modif/profesor-perfil-modif.component';
+import { ProfesorClasesComponent } from './pages/profesor-clases/profesor-clases.component';
 import { ProfesorPlanificacionesComponent } from './pages/profesor-planificaciones/profesor-planificaciones.component';
 import { ProfesorPlanificacionParticularComponent } from './pages/profesor-planificacion-particular/profesor-planificacion-particular.component';
-import { ProfesorPlanificacionParticularEditarComponent } from './pages/profesor-planificacion-particular-editar/profesor-planificacion-particular-editar.component';
+import { ProfesorPlanificacionCrearComponent } from './pages/profesor-planificacion-crear/profesor-planificacion-crear.component';
 import { RegistrarseComponent } from './pages/registrarse/registrarse.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavAdminComponent } from './components/nav-admin/nav-admin.component';
 import { NavAlumnoComponent } from './components/nav-alumno/nav-alumno.component';
 import { NavRegisAdminComponent } from './components/nav-regis-admin/nav-regis-admin.component';
 import { FrasesComponent } from './components/frases/frases.component';
@@ -34,6 +30,7 @@ import { VerCronogramaComponent } from './components/ver-cronograma/ver-cronogra
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearPlanificacionComponent } from './components/crear-planificacion/crear-planificacion.component';
 import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.component';
+import { FooterEstComponent } from './components/footer-est/footer-est.component';
 
 
 
@@ -44,23 +41,19 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     LoginComponent,
     HomeComponent,
     AdminComponent,
-    AdminAlumnoComponent,
-    AdminEditarAlumnoComponent,
-    AdminEditarProfesorComponent,
-    AdminProfesorComponent,
+    AdminPermisosComponent,
     AlumnoCronogramaComponent,
     AlumnoPerfilComponent,
-    AlumnoPerfilModifComponent,
+    AlumnoClasesComponent,
     AlumnoPlanificacionesComponent,
     ProfesorPerfilComponent,
-    ProfesorPerfilModifComponent,
+    ProfesorClasesComponent,
     ProfesorPlanificacionesComponent,
     ProfesorPlanificacionParticularComponent,
-    ProfesorPlanificacionParticularEditarComponent,
+    ProfesorPlanificacionCrearComponent,
     RegistrarseComponent,
     NavComponent,
     FooterComponent,
-    NavAdminComponent,
     NavAlumnoComponent,
     NavRegisAdminComponent,
     VerUsuariosComponent,
@@ -69,6 +62,8 @@ import { EditarPerfilComponent } from './components/editar-perfil/editar-perfil.
     VerCronogramaComponent,
     CrearPlanificacionComponent,
     EditarPerfilComponent,
+    FooterEstComponent,
+    
   ],
   imports: [
     BrowserModule,

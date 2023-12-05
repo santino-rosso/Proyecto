@@ -33,6 +33,7 @@
                         <th scope="col">id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
+                        <th scope="col">Mail</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
@@ -44,6 +45,7 @@
                         <td>{{usuario.id}}</td>
                         <td>{{usuario.nombre}}</td>
                         <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.email}}</td>
                         <td>{{usuario.rol}}</td>
                         <!-- <a type="button" *ngIf="selectedRole === 'admin'" (click)="saveDni(user)" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal"><i class="fa-solid fa-pen-to-square text-white"></i></a> -->
                         <td><button class="btn btn-primary btn-sm me-2" (click)="usuarioEditar(usuario)" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Editar<i class="fa-solid fa-pen-to-square"></i></button></td>
@@ -81,11 +83,6 @@
                         <label for="apellido" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="usuarioaEdi.apellido">
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuarioaEdi.email">
-                    </div>
-                    
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Teléfono</label>
                         <input type="number" class="form-control" id="telefono" name="telefono" [(ngModel)]="usuarioaEdi.telefono">

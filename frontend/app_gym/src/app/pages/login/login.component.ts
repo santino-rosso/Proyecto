@@ -32,7 +32,6 @@ export class LoginComponent {
     console.log('Comprobando credenciales');
     this.authService.login(dataLogin).subscribe({
       next: (rta:any) => {
-        alert("Login exitoso");
         console.log('Respuesta login: ',rta.access_token);
         localStorage.setItem('token', rta.access_token);
         var decodedPayload: any = jwtDecode(rta.access_token);
@@ -42,12 +41,16 @@ export class LoginComponent {
         localStorage.setItem('id', idUsuario );
         
         if (userRole === 'Admin') {
+          alert("Login exitoso");
           this.router.navigate(['/admin']);
         } else if (userRole === 'Profesor') {
+          alert("Login exitoso");
           this.router.navigate(['/profesor_planificaciones']); 
         } else if (userRole === 'Alumno') {
+          alert("Login exitoso");
           this.router.navigate(['/alumno_cronograma']);
         }  else {
+          alert("En espera de aprobacion")
           this.router.navigate(['/home']); 
         }
         

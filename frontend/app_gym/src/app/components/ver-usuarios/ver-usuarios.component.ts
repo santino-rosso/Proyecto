@@ -12,9 +12,7 @@ export class VerUsuariosComponent {
   currentPage: number = 1;
   totalPages: number = 1;
   itemsPerPage: number = 5
-  contadorEspecialidad: number = 1;
   selectedRol: string = 'Todos';
-
   usuarioaEdi: any = {
       "rol": "",
       "nombre": "",
@@ -23,6 +21,7 @@ export class VerUsuariosComponent {
       "telefono": null,
       "email": ""
   };
+  usuarioRol: any;
 
   
   constructor(
@@ -55,6 +54,7 @@ export class VerUsuariosComponent {
   }
 
   usuarioEditar(usuario:any){
+    this.usuarioRol = usuario.rol;
     this.usuarioaEdi = usuario;
   }
 
@@ -63,7 +63,7 @@ export class VerUsuariosComponent {
     const usuarioEditado = {
       nombre: this.usuarioaEdi.nombre, 
       apellido: this.usuarioaEdi.apellido,
-      contraseña: this.usuarioaEdi.contraseña,
+      contraseña: this.usuarioaEdi.contrasena,
       rol: this.usuarioaEdi.rol,
       dni: this.usuarioaEdi.dni,
       email: this.usuarioaEdi.email
@@ -73,10 +73,9 @@ export class VerUsuariosComponent {
       id_usuario: this.usuarioaEdi.id
     }
     const socio = {
-      nro_socio: this.contadorEspecialidad,
+      nro_socio: this.usuarioaEdi.id * 10,
       id_usuario: this.usuarioaEdi.id
     }
-    this.contadorEspecialidad++;
     this.usuariosService.putUsuario(this.usuarioaEdi.id, usuarioEditado).subscribe((data:any) => {
       console.log('Usuario editado', data);
       if (this.usuarioaEdi.rol === 'Profesor')
@@ -86,7 +85,7 @@ export class VerUsuariosComponent {
         else
           this.usuariosService.putEspecialidad(especialidad, this.usuarioaEdi.id).subscribe((data:any) => {
           })
-      if (this.usuarioaEdi.rol === 'Alumno')
+      if (this.usuarioaEdi.rol === 'Alumno' && this.usuarioRol === "")
          this.usuariosService.postSocio(socio).subscribe((data:any) => {
         })
       this.ngOnInit();

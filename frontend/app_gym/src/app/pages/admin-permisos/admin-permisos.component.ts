@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { PermisosService } from 'src/app/services/permisos.service';
 
 @Component({
-  selector: 'app-admin-alumno',
-  templateUrl: './admin-alumno.component.html',
-  styleUrls: ['./admin-alumno.component.css']
+  selector: 'app-admin-permisos',
+  templateUrl: './admin-permisos.component.html',
+  styleUrls: ['./admin-permisos.component.css']
 })
-export class AdminAlumnoComponent {
+export class AdminPermisosComponent {
   arrayPermisos:any;
   currentPage: number = 1;
   totalPages: number = 1;
