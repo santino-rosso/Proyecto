@@ -11,8 +11,9 @@ export class VerUsuariosComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
-  itemsPerPage: number = 5
+  itemsPerPage: number = 2
   selectedRol: string = 'Todos';
+  selectedSearch: string = "";
   usuarioaEdi: any = {
       "rol": "",
       "nombre": "",
@@ -22,6 +23,7 @@ export class VerUsuariosComponent {
       "email": ""
   };
   usuarioRol: any;
+  mostrarContrasena: boolean = false;
 
   
   constructor(
@@ -32,11 +34,16 @@ export class VerUsuariosComponent {
   rol = localStorage.getItem('rol');
   
   ngOnInit() {
-    this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
-      console.log('JSON data:', data);
-      this.arrayUsuarios = data.usuario;
-      this.totalPages = data.pages;
-    })
+    if (this.selectedSearch===''){
+        this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
+        console.log('JSON data:', data);
+        this.arrayUsuarios = data.usuario;
+        this.totalPages = data.pages;
+        });
+      }
+    else {
+      this.buscarUsuarios()
+    }
   }
 
   loadNextPage() {
@@ -54,6 +61,7 @@ export class VerUsuariosComponent {
   }
 
   usuarioEditar(usuario:any){
+    this.mostrarContrasena = false;
     this.usuarioRol = usuario.rol;
     this.usuarioaEdi = usuario;
   }
@@ -118,7 +126,20 @@ export class VerUsuariosComponent {
   Reiniciar() {
     this.currentPage = 1;
     this.selectedRol = 'Todos';
+    this.selectedSearch = "";
     this.ngOnInit();
   }
   
+  BotonContrasena() {
+    this.mostrarContrasena = !this.mostrarContrasena;
+  }
+
+  buscarUsuarios(){
+    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage).subscribe((data:any) =>{
+      console.log('JSON data:', data);
+      this.arrayUsuarios = data.usuario;
+      this.totalPages = data.pages;
+    })
+  }
+
 }

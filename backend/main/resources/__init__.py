@@ -10,6 +10,8 @@ from .planificacion import PlanificacionProfesor as PlanificacionProfesorResourc
 from .planificacion import PlanificacionesProfesores as PlanificacionesProfesoresResource
 from .clase import Clase as ClaseResource
 from .clase import Clases as ClasesResource
+from .clase import ProfesorClases as ProfesorClasesResource
+from .clase import ProfesorClase as ProfesorClaseResource
 from .pago import Pago as PagoResource
 from .login import Login as LoginResource
 from .permiso import Permiso as PermisoResource

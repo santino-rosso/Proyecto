@@ -11,6 +11,7 @@ export class AlumnoClasesComponent {
   currentPage: number = 1;
   totalPages: number = 1;
   itemsPerPage: number = 5;
+  profesor:any;
 
   constructor(
     private clasesService: ClasesService,
@@ -21,6 +22,13 @@ export class AlumnoClasesComponent {
       console.log('JSON data:', data);
       this.arrayClases = data.clases;
       this.totalPages = data.pages;
+      for (const clase of this.arrayClases) {
+        const claseId = clase.id;
+        this.clasesService.getprofesor_clase(claseId).subscribe((profesorData: any) => {
+          this.profesor = profesorData[0].usuario.nombre +" "+profesorData[0].usuario.apellido;
+            clase['Profesor'] = this.profesor;
+        });
+      }
     })
   }
 

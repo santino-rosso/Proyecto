@@ -8,10 +8,11 @@ import { ClasesService } from 'src/app/services/clases.service';
 })
 export class ProfesorClasesComponent {
   arrayClases:any;
+  profesor:any;
   currentPage: number = 1;
   totalPages: number = 1;
   itemsPerPage: number = 5;
-
+  idProfesor = Number(localStorage.getItem('id'));
   claseaEdi: any = {
     "nombre_clase": "",
     "horario_clase": "",
@@ -31,9 +32,15 @@ export class ProfesorClasesComponent {
       console.log('JSON data:', data);
       this.arrayClases = data.clases;
       this.totalPages = data.pages;
+      for (const clase of this.arrayClases) {
+        const claseId = clase.id;
+        this.clasesService.getprofesor_clase(claseId).subscribe((profesorData: any) => {
+          this.profesor = profesorData[0].usuario.nombre +" "+profesorData[0].usuario.apellido;
+            clase['Profesor'] = this.profesor;
+        });
+      }
     })
   }
-
 
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
@@ -74,8 +81,8 @@ export class ProfesorClasesComponent {
   eliminarClase(id:number){
     this.clasesService.deleteclase(id).subscribe((data:any) => {
       console.log('clase eliminada', data);
-      this.ngOnInit();
     })
+    this.ngOnInit();
   }
 
   crearClase(){
@@ -85,7 +92,13 @@ export class ProfesorClasesComponent {
     };
     this.clasesService.crearclases(clasesCrear).subscribe((data:any) =>{
       console.log('Clase creada:', data);
-    })
+      const clases_profesor = {
+        id_clase: data.id,
+        id_profesor: this.idProfesor
+      }
+      this.clasesService.crearclases_profesor(clases_profesor).subscribe((data:any) =>{
+      })
     this.ngOnInit();
-  }
+    }
+  )}
 }

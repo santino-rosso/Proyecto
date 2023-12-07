@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
-from main.models import ClasesModel
+from main.models import ClasesModel, ProfesoresModel
 from main.auth.decorators import role_required
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -75,4 +75,40 @@ class Clases(Resource):
             return "Formato no correcto", 400
         return clase.to_json(), 201
     
-   
+class ProfesorClase(Resource):
+    #@jwt_required()
+    def get(self, id):
+        # Buscar la clase por su ID
+        clase = db.session.query(ClasesModel).get_or_404(id)
+        # Obtener el profesor asociado a la clase
+        profesor = clase.profesores
+        # Convertir el profesor a formato JSON
+        profesor_json = [profesor.to_json() for profesor in profesor]
+        return profesor_json
+    
+class ProfesorClases(Resource):
+    #@jwt_required()
+    def get(self):
+        data = request.get_json()
+        id_profesor = data.get('id_profesor')
+        # Buscar al profesor por su ID
+        profesor = db.session.query(ProfesoresModel).get_or_404(id_profesor)
+        # Obtener las clases asociadas al profesor
+        clases = profesor.clases
+        # Convertir las clases a formato JSON
+        clases_json = [clase.to_json() for clase in clases]
+        return clases_json
+       
+    #@role_required(roles = ["Admin","Profesor"])   
+    def post(self):
+        data = request.get_json()
+        clase_id = data.get('id_clase')
+        profesor_id = data.get('id_profesor')
+        clase = db.session.query(ClasesModel).get_or_404(clase_id)
+        profesor = db.session.query(ProfesoresModel).get_or_404(profesor_id)
+        if clase and profesor:
+            clase.profesores.append(profesor)
+            db.session.commit()
+            return {'message': 'Profesor agregado a la clase exitosamente'}, 201
+        else:
+            return {'message': 'La clase o el profesor no existen.'}, 404

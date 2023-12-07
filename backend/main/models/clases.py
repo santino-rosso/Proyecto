@@ -12,7 +12,7 @@ class Clases(db.Model):
     nombre_clase= db.Column(db.String(100), nullable=False)
     horario_clase= db.Column(db.DateTime, nullable=False)
     profesores = db.relationship('Profesores', secondary=profesores_clases, backref=db.backref('clases', lazy='dynamic'))
-
+    
     def __repr__(self):
         return '<usuarios: %r %r   >' % (self.nombre_clase,self.horario_clase)
     

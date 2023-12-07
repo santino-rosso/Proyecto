@@ -49,5 +49,21 @@ export class ClasesService {
         return this.httpClient.post(`${this.url}/clases`, data, { headers: headers });
       }
 
-  
+    crearclases_profesor(data:any){
+      let auth_token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+        return this.httpClient.post(`${this.url}/profesor_clases`, data, { headers: headers });
+      }
+
+    getprofesor_clase(id: number){
+      let auth_token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+        return this.httpClient.get(this.url + '/profesor_clase/' + id, { headers: headers });
+    }
 }

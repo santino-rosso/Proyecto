@@ -10,12 +10,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Clase</th>
+                        <th scope="col">Profesor</th>
                         <th scope="col">Horario</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let clase of arrayClases">
                         <td>{{clase.nombre_clase}}</td>
+                        <td>{{clase.Profesor}}</td>
                         <td>{{clase.horario_clase}}</td>
                     </tr>
                 </tbody>

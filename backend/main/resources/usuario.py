@@ -5,7 +5,7 @@ from main.models import UsuariosModel
 from main.models import ProfesoresModel
 from main.models import AlumnosModel
 from main.models import PlanificacionesModel
-from sqlalchemy import desc, func
+from sqlalchemy import desc, func,or_,and_
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 #Datos de prueba en JSON
@@ -81,6 +81,22 @@ class Usuarios(Resource):
         
         if request.args.get('sortby_apellido'):
             usuarios=usuarios.order_by(desc(UsuariosModel.apellido))
+            
+        if request.args.get('search_term'):
+            search_term = request.args.get('search_term')
+            search_terms = search_term.split(' ')
+            
+            if len(search_terms) == 1:
+                usuarios = usuarios.filter(or_(
+                    UsuariosModel.nombre.like(f"%{search_term}%"), 
+                    UsuariosModel.apellido.like(f"%{search_term}%")
+                ))
+            else:
+                usuarios = usuarios.filter(and_(
+                    UsuariosModel.nombre.like(f"%{search_terms[0]}%"),
+                    UsuariosModel.apellido.like(f"%{search_terms[1]}%")
+                ))
+        
 
         usuarios = usuarios.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 

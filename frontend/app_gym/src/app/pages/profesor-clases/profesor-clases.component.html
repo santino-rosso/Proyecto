@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Clase</th>
+                        <th scope="col">Profesor</th>
                         <th scope="col">Horario</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
@@ -19,6 +20,7 @@
                 <tbody>
                     <tr *ngFor="let clase of arrayClases">
                         <td>{{clase.nombre_clase}}</td>
+                        <td>{{clase.Profesor}}</td>
                         <td>{{clase.horario_clase}}</td>
                         <td><button class="btn btn-primary btn-sm me-2" (click)="claseEditar(clase)" data-bs-toggle="modal" data-bs-target="#EditarClaseModal">Editar<i class="fa-solid fa-pen-to-square"></i></button></td>
                         <td><button class="btn btn-primary btn-sm me-2" (click)="eliminarClase(clase.id)" >Eliminar<i class="fa-solid fa-pen-to-square"></i></button></td>

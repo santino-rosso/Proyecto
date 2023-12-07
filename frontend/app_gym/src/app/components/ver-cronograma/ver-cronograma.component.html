@@ -27,6 +27,12 @@
                     </div>
                 </div>
             </div>
+            <div class="row" style="margin-top: 70px;">
+                <div class=" text-center d-flex justify-content-center">
+                      <button (click)="loadPreviousPage()" class="btn btn-primary" [disabled]="currentPage === 1">Página anterior</button>
+                      <button (click)="loadNextPage()" class="btn btn-primary" [disabled]="currentPage === totalPages">></button>
+                </div>
+            </div>
         </div>
         <div class="col-md-4 mx-auto justify-content-center align-items-center d-flex">
             <div class="container mx-auto d-flex justify-content-center">
@@ -35,12 +41,6 @@
                     style="max-height:  20rem; margin-top: 7rem;" />
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-              <div class="col-md-4 offset-md-2 text-center">
-                <button (click)="loadPreviousPage()" class="btn btn-primary me-2" [disabled]="currentPage === 1" style="margin-top: -70px;">Página anterior</button>
-                <button (click)="loadNextPage()" class="btn btn-primary" [disabled]="currentPage === totalPages" style="margin-top: -70px;">Página siguiente</button>
-              </div>
-            </div>
-        </div>
     </div>
+</section>
+        
