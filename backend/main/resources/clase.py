@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
+from sqlalchemy import desc
 from .. import db
 from main.models import ClasesModel, ProfesoresModel
 from main.auth.decorators import role_required
@@ -52,10 +53,10 @@ class Clases(Resource):
         if request.args.get('horario_clase'):
             clases=clases.filter(ClasesModel.horario_clase.like("%"+request.args.get('horario_clase')+"%"))
         
-        if request.args.get('sortby_nombre_clase'):
-            clases=clases.order_by((ClasesModel.nombre_clase))
+        if request.args.get('nombre_clase'):
+            clases=clases.filter(ClasesModel.nombre_clase.like("%"+request.args.get('nombre_clase')+"%"))
   
-        
+        clases = clases.order_by(desc(ClasesModel.horario_clase))
 
         clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 

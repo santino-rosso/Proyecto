@@ -11,8 +11,8 @@ export class VerUsuariosComponent {
   arrayUsuarios:any;
   currentPage: number = 1;
   totalPages: number = 1;
-  itemsPerPage: number = 2
-  selectedRol: string = 'Todos';
+  itemsPerPage: number = 5
+  selectedRol: string = '';
   selectedSearch: string = "";
   usuarioaEdi: any = {
       "rol": "",
@@ -34,29 +34,24 @@ export class VerUsuariosComponent {
   rol = localStorage.getItem('rol');
   
   ngOnInit() {
-    if (this.selectedSearch===''){
-        this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
-        console.log('JSON data:', data);
-        this.arrayUsuarios = data.usuario;
-        this.totalPages = data.pages;
-        });
-      }
-    else {
-      this.buscarUsuarios()
-    }
+    this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
+      console.log('JSON data:', data);
+      this.arrayUsuarios = data.usuario;
+      this.totalPages = data.pages;
+      });    
   }
 
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.filtrarPorRol(this.selectedRol);
+      this.buscarUsuarios();
     }
   }
 
   loadPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--; 
-      this.filtrarPorRol(this.selectedRol);
+      this.buscarUsuarios();
     }
   }
 
@@ -107,25 +102,9 @@ export class VerUsuariosComponent {
     })
   }
 
-  
-  filtrarPorRol(rol: string) {
-    this.selectedRol = rol;
-    if (this.selectedRol === 'Todos') {
-      // Si se selecciona 'Todos', cargar todos los usuarios
-      this.ngOnInit();
-    } else {
-      // Filtrar por el rol seleccionado
-      this.usuariosService.getUsersByRol(this.currentPage, this.selectedRol, this.itemsPerPage).subscribe((data: any) => {
-        console.log('JSON data:', data);
-        this.arrayUsuarios = data.usuario;
-        this.totalPages = data.pages;
-      });
-    }
-  }
-
   Reiniciar() {
     this.currentPage = 1;
-    this.selectedRol = 'Todos';
+    this.selectedRol = '';
     this.selectedSearch = "";
     this.ngOnInit();
   }
@@ -135,11 +114,21 @@ export class VerUsuariosComponent {
   }
 
   buscarUsuarios(){
-    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage).subscribe((data:any) =>{
+    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage, this.selectedRol).subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
     })
   }
 
+  filtrarPorRol(rol: string) {
+    this.currentPage = 1
+    this.selectedRol = rol;
+    this.buscarUsuarios()
+  }
+
+  buscarPorNombre() {
+    this.currentPage = 1
+    this.buscarUsuarios()
+  }
 }

@@ -13,6 +13,8 @@ export class CrearPlanificacionComponent {
   registerForm!: FormGroup;
   arrayUsuarios:any;
   currentPage: number = 1;
+  selectedSearch: string = "";
+  selectedRol: string = '';
   totalPages: number = 1;
   itemsPerPage: number = 5;
   planificacion: any = {
@@ -80,6 +82,21 @@ export class CrearPlanificacionComponent {
     };
     this.planificacionesService.postplanificaciones(planificacionCrear).subscribe((data:any) => {
       console.log('Planificacion creada', data);
+    })
+  }
+
+  Reiniciar() {
+    this.currentPage = 1;
+    this.selectedSearch = "";
+    this.ngOnInit();
+  }
+
+  buscarUsuarios(){
+    this.currentPage = 1
+    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage, this.selectedRol).subscribe((data:any) =>{
+      console.log('JSON data:', data);
+      this.arrayUsuarios = data.usuario;
+      this.totalPages = data.pages;
     })
   }
 }

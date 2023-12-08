@@ -5,6 +5,7 @@ from main.models import PlanificacionesModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 from datetime import datetime
+from sqlalchemy import desc
 
 
 
@@ -74,8 +75,7 @@ class PlanificacionesProfesores(Resource):
         if request.args.get('id_alumno'):
             planificaciones=planificaciones.filter(PlanificacionesModel.id_alumno.like("%"+request.args.get('id_alumno')+"%"))
 
-      
-        
+        planificaciones = planificaciones.order_by(desc(PlanificacionesModel.fecha))
 
         planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
