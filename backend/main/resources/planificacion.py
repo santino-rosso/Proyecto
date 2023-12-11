@@ -1,7 +1,8 @@
+from operator import and_, or_
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
-from main.models import PlanificacionesModel
+from main.models import PlanificacionesModel, UsuariosModel, AlumnosModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 from datetime import datetime
@@ -74,6 +75,31 @@ class PlanificacionesProfesores(Resource):
 
         if request.args.get('id_alumno'):
             planificaciones=planificaciones.filter(PlanificacionesModel.id_alumno.like("%"+request.args.get('id_alumno')+"%"))
+
+        
+        if request.args.get('search'):
+            search = request.args.get('search')
+            searchs = search.split(' ')
+            if len(searchs) == 1:
+                planificaciones = (
+                    planificaciones
+                    .join(AlumnosModel, PlanificacionesModel.alumno)
+                    .join(UsuariosModel, AlumnosModel.usuario)
+                    .filter(or_(
+                        UsuariosModel.nombre.like(f"%{search}%"), 
+                        UsuariosModel.apellido.like(f"%{search}%")
+                    ))
+                )
+            else:
+                planificaciones = (
+                    planificaciones
+                    .join(AlumnosModel, PlanificacionesModel.alumno)
+                    .join(UsuariosModel, AlumnosModel.usuario)
+                    .filter(and_(
+                        UsuariosModel.nombre.like(f"%{searchs[0]}%"),
+                        UsuariosModel.apellido.like(f"%{searchs[1]}%")
+                    ))
+                )
 
         planificaciones = planificaciones.order_by(desc(PlanificacionesModel.fecha))
 

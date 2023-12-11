@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlanificacionesService } from 'src/app/services/planificaciones.service';
 
 @Component({
@@ -10,11 +8,9 @@ import { PlanificacionesService } from 'src/app/services/planificaciones.service
   styleUrls: ['./crear-planificacion.component.css']
 })
 export class CrearPlanificacionComponent {
-  registerForm!: FormGroup;
   arrayUsuarios:any;
   currentPage: number = 1;
   selectedSearch: string = "";
-  selectedRol: string = '';
   totalPages: number = 1;
   itemsPerPage: number = 5;
   planificacion: any = {
@@ -36,7 +32,6 @@ export class CrearPlanificacionComponent {
   constructor(
     private usuariosService: UsuariosService,
     private planificacionesService: PlanificacionesService,
-    private formBuilder: FormBuilder,
   ){}
   
   ngOnInit() {
@@ -46,20 +41,18 @@ export class CrearPlanificacionComponent {
       this.totalPages = data.pages;
     })
   }
- 
-
 
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.ngOnInit();
+      this.buscarUsuarios();
     }
   }
 
   loadPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--; 
-      this.ngOnInit();
+      this.buscarUsuarios();
     }
   }
 
@@ -92,12 +85,16 @@ export class CrearPlanificacionComponent {
   }
 
   buscarUsuarios(){
-    this.currentPage = 1
-    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage, this.selectedRol).subscribe((data:any) =>{
+    this.usuariosService.getUsersBySearch(this.currentPage, this.selectedSearch, this.itemsPerPage, 'Alumno').subscribe((data:any) =>{
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
     })
+  }
+
+  buscarPorNombre() {
+    this.currentPage = 1
+    this.buscarUsuarios()
   }
 }
 

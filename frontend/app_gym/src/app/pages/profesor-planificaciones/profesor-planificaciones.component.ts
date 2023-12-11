@@ -10,8 +10,9 @@ export class ProfesorPlanificacionesComponent {
   arrayPlanificaciones:any;
   currentPage: number = 1;
   totalPages: number = 1;
-  itemsPerPage: number = 5;
+  itemsPerPage: number = 2;
   idProfesor: number = Number(localStorage.getItem('id'));
+  selectedSearch: string = "";
 
   constructor(
     private planificacionesService: PlanificacionesService,
@@ -28,14 +29,14 @@ export class ProfesorPlanificacionesComponent {
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.ngOnInit();
+      this.buscarUsuarios();
     }
   }
 
   loadPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--; 
-      this.ngOnInit();
+      this.buscarUsuarios();
     }
   }
 
@@ -50,5 +51,24 @@ export class ProfesorPlanificacionesComponent {
       console.log('Usuario eliminado', data);
       this.ngOnInit();
     })
+  }
+
+  Reiniciar() {
+    this.currentPage = 1;
+    this.selectedSearch = "";
+    this.ngOnInit();
+  }
+
+  buscarUsuarios(){
+    this.planificacionesService.getPlanificaionesBySearch(this.currentPage, this.idProfesor, this.itemsPerPage,this.selectedSearch).subscribe((data:any) =>{
+      console.log('JSON data:', data);
+        this.arrayPlanificaciones = data.planificacion;
+        this.totalPages = data.pages;
+    })
+  }
+
+  buscarPorNombre() {
+    this.currentPage = 1
+    this.buscarUsuarios()
   }
 }

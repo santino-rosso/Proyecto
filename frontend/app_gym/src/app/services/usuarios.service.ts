@@ -19,7 +19,7 @@ export class UsuariosService {
     });
     return this.httpClient.get(`${this.url}/usuarios?page=${page}&per_page=${per_page}`, { headers: headers });
   }
-  // eliminar
+  
   getUsersByRol(page: number, rol: string,per_page:number) {
     let auth_token = localStorage.getItem('token');
 

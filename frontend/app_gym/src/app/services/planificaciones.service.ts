@@ -30,6 +30,16 @@ export class PlanificacionesService {
     return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&per_page=${per_page}&id_profesor=${id_profesor}&`, { headers: headers }); 
   }
 
+  getPlanificaionesBySearch(page: number, id_profesor: number, per_page: number, search:string) {
+    let auth_token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    return this.httpClient.get(`${this.url}/planificaciones_profesores?page=${page}&per_page=${per_page}&id_profesor=${id_profesor}&search=${search}&`, { headers: headers }); 
+  }
+
   getplanificacionesalumno(page: number, id_alumno: number, per_page: number) {
     let auth_token = localStorage.getItem('token');
 
