@@ -8,7 +8,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./editar-perfil.component.css']
 })
 export class EditarPerfilComponent {
-
+  mostrarContrasena: boolean = false;
   idUsuario = Number(localStorage.getItem("id"))
   usuario:any = {
     "rol": "",
@@ -45,6 +45,7 @@ export class EditarPerfilComponent {
   }
 
   usuarioEditar(usuario:any){
+    this.mostrarContrasena = false;
     this.usuarioaEdi = usuario;
   }
 
@@ -63,6 +64,11 @@ export class EditarPerfilComponent {
       this.ngOnInit();
     
     })
+  }
+
+
+  BotonContrasena() {
+    this.mostrarContrasena = !this.mostrarContrasena;
   }
 }
 

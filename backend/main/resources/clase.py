@@ -77,7 +77,7 @@ class Clases(Resource):
         return clase.to_json(), 201
     
 class ProfesorClase(Resource):
-    #@jwt_required()
+    @jwt_required()
     def get(self, id):
         # Buscar la clase por su ID
         clase = db.session.query(ClasesModel).get_or_404(id)
@@ -88,7 +88,7 @@ class ProfesorClase(Resource):
         return profesor_json
     
 class ProfesorClases(Resource):
-    #@jwt_required()
+    @jwt_required()
     def get(self):
         data = request.get_json()
         id_profesor = data.get('id_profesor')
@@ -100,7 +100,7 @@ class ProfesorClases(Resource):
         clases_json = [clase.to_json() for clase in clases]
         return clases_json
        
-    #@role_required(roles = ["Admin","Profesor"])   
+    @role_required(roles = ["Admin","Profesor"])   
     def post(self):
         data = request.get_json()
         clase_id = data.get('id_clase')

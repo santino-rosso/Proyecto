@@ -7,7 +7,6 @@ import {AuthService} from 'src/app/services/auth.service';
   styleUrls: ['./nav-regis-admin.component.css']
 })
 export class NavRegisAdminComponent {
-
   constructor(
     private authService: AuthService
   ){}

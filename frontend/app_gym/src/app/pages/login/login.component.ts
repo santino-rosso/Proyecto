@@ -13,7 +13,6 @@ import jwtDecode, {JwtDecodeOptions} from 'jwt-decode';
 
 export class LoginComponent {
   loginForm!: FormGroup;
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -76,4 +75,7 @@ export class LoginComponent {
     }
   }
 
+  mostrarAlerta(){
+    alert("Si olvidaste tu contraseña comunicate con la administracion para restablecerla");
+  }
 }
