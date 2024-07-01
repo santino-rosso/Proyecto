@@ -3,7 +3,7 @@ from . import UsuariosModel
 
 class Profesores(db.Model):
     # id = db.Column(db.Integer, primary_key=True,)
-    especialidad= db.Column(db.String(100), nullable=False)
+    especialidad= db.Column(db.String(100),autoincrement=True , nullable=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), primary_key=True)
     
     usuario = db.relationship("Usuarios", uselist=False, back_populates="profesor", cascade = 'all, delete-orphan', single_parent=True)

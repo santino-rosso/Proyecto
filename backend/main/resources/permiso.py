@@ -4,6 +4,7 @@ from .. import db
 from main.models import PermisosModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
+from sqlalchemy import desc
 
 
 class Permiso(Resource):
@@ -46,6 +47,12 @@ class Permisos(Resource):
        
         if request.args.get('rol'):
             permisos = permisos.filter(PermisosModel.rol == request.args.get('rol'))
+
+        #Ordenar Permisos por recurso
+        if request.args.get('recurso'):
+            permisos = permisos.filter(PermisosModel.recurso == request.args.get('recurso'))
+
+        permisos = permisos.order_by(desc(PermisosModel.resource))
     
         permisos = permisos.paginate(page=page, per_page=per_page, error_out=False, max_per_page=10)   
 

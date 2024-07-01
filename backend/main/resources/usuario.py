@@ -182,8 +182,6 @@ class UsuariosAlumnos(Resource):
         return usuario_alumno.to_json(), 201
 
 
-
-
 class UsuarioProfesor(Resource):
     @jwt_required(optional=True)
     def get(self, id):
@@ -197,13 +195,22 @@ class UsuarioProfesor(Resource):
         
     @role_required(roles = ["Admin"])
     def put(self, id):
-        usuario_profesor = db.session.query(ProfesoresModel).get_or_404(id)
-        data = request.get_json().items()
-        for key, value in data:
-            setattr(usuario_profesor, key, value)
-        db.session.add(usuario_profesor)
-        db.session.commit()
-        return usuario_profesor.to_json(), 201
+        try:
+            usuario_profesor = db.session.query(ProfesoresModel).get(id)
+            if usuario_profesor is None:
+                usuario_profesor = ProfesoresModel.from_json(request.get_json())
+                db.session.add(usuario_profesor)
+                db.session.commit()
+                return usuario_profesor.to_json(), 201
+            else:
+                data = request.get_json().items()
+                for key, value in data:
+                    setattr(usuario_profesor, key, value)
+                db.session.add(usuario_profesor)
+                db.session.commit()
+                return usuario_profesor.to_json(), 201
+        except:
+            return "Formato no correcto", 400
         
 class UsuariosProfesores(Resource):
     @jwt_required(optional=True)
@@ -230,12 +237,4 @@ class UsuariosProfesores(Resource):
                   'page': page
                 })
     
-    @role_required(roles = ["Admin"])
-    def post(self):
-        usuario_profesor = ProfesoresModel.from_json(request.get_json())
-        try:
-            db.session.add(usuario_profesor)
-            db.session.commit()
-        except:
-            return "Formato no correcto", 400
-        return usuario_profesor.to_json(), 201
+    
