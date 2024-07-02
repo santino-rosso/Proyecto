@@ -66,9 +66,10 @@ class Clases(Resource):
                   'page': page
                 })
 
-    @role_required(roles = ["Admin","Profesor"])
+    @role_required(roles = ["Profesor"])
     def post(self):
         clase = ClasesModel.from_json(request.get_json())
+        print(clase)
         try:
             db.session.add(clase)
             db.session.commit()
@@ -100,7 +101,7 @@ class ProfesorClases(Resource):
         clases_json = [clase.to_json() for clase in clases]
         return clases_json
        
-    @role_required(roles = ["Admin","Profesor"])   
+    @role_required(roles = ["Profesor"])   
     def post(self):
         data = request.get_json()
         clase_id = data.get('id_clase')
