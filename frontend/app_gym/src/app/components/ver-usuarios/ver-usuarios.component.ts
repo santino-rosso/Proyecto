@@ -60,7 +60,6 @@ export class VerUsuariosComponent {
     this.mostrarContrasena = false;
     this.usuarioRol = usuario.rol;
     this.usuarioaEdi = usuario;
-    // Asegurar valor predeterminado al editar
     if (this.usuarioaEdi.rol === 'Profesor' && !this.usuarioaEdi.especialidad) {
       this.usuarioaEdi.especialidad = 'null';
     }
@@ -78,7 +77,6 @@ export class VerUsuariosComponent {
       especialidad: this.usuarioaEdi.especialidad
     };
 
-    // Si el rol es Profesor y no tiene especialidad, asignar "Sin especialidad"
     if (this.usuarioaEdi.rol === 'Profesor' && !this.usuarioaEdi.especialidad) {
       this.usuarioaEdi.especialidad = this;
     }
