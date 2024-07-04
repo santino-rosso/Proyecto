@@ -15,17 +15,17 @@ export class VerUsuariosComponent {
   selectedRol: string = '';
   selectedSearch: string = "";
   usuarioaEdi: any = {
-      "rol": "",
-      "nombre": "",
-      "apellido": "",
-      "contraseña": "",
-      "telefono": null,
-      "email": ""
+    "rol": "",
+    "nombre": "",
+    "apellido": "",
+    "contraseña": "",
+    "telefono": null,
+    "email": "",
+    "especialidad": "" // Valor predeterminado
   };
   usuarioRol: any;
   mostrarContrasena: boolean = false;
 
-  
   constructor(
     private usuariosService: UsuariosService,
     private router: Router,
@@ -34,12 +34,13 @@ export class VerUsuariosComponent {
   rol = localStorage.getItem('rol');
   
   ngOnInit() {
-    this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) =>{
+    this.usuariosService.getUsers(this.currentPage, this.itemsPerPage).subscribe((data:any) => {
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
-      });    
+    });    
   }
+  
 
   loadNextPage() {
     if (this.currentPage < this.totalPages) {
@@ -59,6 +60,10 @@ export class VerUsuariosComponent {
     this.mostrarContrasena = false;
     this.usuarioRol = usuario.rol;
     this.usuarioaEdi = usuario;
+    // Asegurar valor predeterminado al editar
+    if (this.usuarioaEdi.rol === 'Profesor' && !this.usuarioaEdi.especialidad) {
+      this.usuarioaEdi.especialidad = 'null';
+    }
   }
 
   editarUsuario() {
@@ -69,37 +74,41 @@ export class VerUsuariosComponent {
       contraseña: this.usuarioaEdi.contrasena,
       rol: this.usuarioaEdi.rol,
       dni: this.usuarioaEdi.dni,
-      email: this.usuarioaEdi.email
+      email: this.usuarioaEdi.email,
+      especialidad: this.usuarioaEdi.especialidad
     };
+
+    // Si el rol es Profesor y no tiene especialidad, asignar "Sin especialidad"
+    if (this.usuarioaEdi.rol === 'Profesor' && !this.usuarioaEdi.especialidad) {
+      this.usuarioaEdi.especialidad = this;
+    }
+
     const especialidad = {
       especialidad: this.usuarioaEdi.especialidad,
       id_usuario: this.usuarioaEdi.id
-    }
+    };
     const socio = {
       nro_socio: this.usuarioaEdi.id * 10,
       id_usuario: this.usuarioaEdi.id
-    }
+    };
+
     this.usuariosService.putUsuario(this.usuarioaEdi.id, usuarioEditado).subscribe((data:any) => {
       console.log('Usuario editado', data);
-      if (this.usuarioaEdi.rol === 'Profesor')
-        if (this.usuarioaEdi.especialidad === "")
-          this.usuariosService.postEspecialidad(especialidad).subscribe((data:any) => {
-        })
-        else
-          this.usuariosService.putEspecialidad(especialidad, this.usuarioaEdi.id).subscribe((data:any) => {
-          })
-      if (this.usuarioaEdi.rol === 'Alumno' && this.usuarioRol === "")
-         this.usuariosService.postSocio(socio).subscribe((data:any) => {
-        })
+      if (this.usuarioaEdi.rol === 'Profesor') {
+        this.usuariosService.putEspecialidad(especialidad, this.usuarioaEdi.id).subscribe((data:any) => {});
+      }
+      if (this.usuarioaEdi.rol === 'Alumno' && this.usuarioRol === "") {
+        this.usuariosService.postSocio(socio).subscribe((data:any) => {});
+      }
       this.ngOnInit();
-      
-  })}
+    });
+  }
 
   eliminarUsuario(id:number){
     this.usuariosService.deleteUsuario(id).subscribe((data:any) => {
       console.log('Usuario eliminado', data);
       this.ngOnInit();
-    })
+    });
   }
 
   Reiniciar() {
@@ -108,7 +117,7 @@ export class VerUsuariosComponent {
     this.selectedSearch = "";
     this.ngOnInit();
   }
-  
+
   BotonContrasena() {
     this.mostrarContrasena = !this.mostrarContrasena;
   }
@@ -118,17 +127,17 @@ export class VerUsuariosComponent {
       console.log('JSON data:', data);
       this.arrayUsuarios = data.usuario;
       this.totalPages = data.pages;
-    })
+    });
   }
 
   filtrarPorRol(rol: string) {
-    this.currentPage = 1
+    this.currentPage = 1;
     this.selectedRol = rol;
-    this.buscarUsuarios()
+    this.buscarUsuarios();
   }
 
   buscarPorNombre() {
-    this.currentPage = 1
-    this.buscarUsuarios()
+    this.currentPage = 1;
+    this.buscarUsuarios();
   }
 }
