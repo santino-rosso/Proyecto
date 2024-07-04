@@ -73,6 +73,7 @@ export class ProfesorClasesComponent {
     };
     this.clasesService.putclase(this.claseaEdi.id,claseEditado).subscribe((data:any) =>{
       console.log('Clase editada:', data);
+      this.Reiniciar();
     })
     this.ngOnInit();
   
@@ -81,7 +82,10 @@ export class ProfesorClasesComponent {
   eliminarClase(id:number){
     this.clasesService.deleteclase(id).subscribe((data:any) => {
       console.log('clase eliminada', data);
+      // Ahora llama Reiniciar() para actualizar la lista de clases
+      this.Reiniciar();
     })
+    
     this.ngOnInit();
   }
 

@@ -5,6 +5,8 @@ from .. import db
 from main.models import ClasesModel, ProfesoresModel
 from main.auth.decorators import role_required
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from datetime import datetime
+
 
 
 #Datos de prueba en JSON
@@ -24,11 +26,16 @@ class Clase(Resource):
     def put(self, id):
         clase = db.session.query(ClasesModel).get_or_404(id)
         data = request.get_json().items()
+        print(data)
         for key, value in data:
+            if key == 'horario_clase': #Convierte las fechas de string en datetime para el siguiente formato 01/01/2024, 13:00:00
+                value = datetime.strptime(value, '%d/%m/%Y, %H:%M:%S')
             setattr(clase, key, value)
+                
         db.session.add(clase)
         db.session.commit()
         return clase.to_json(), 201
+    
     
     @role_required(roles = ["Admin","Profesor"])
     def delete(self, id):
